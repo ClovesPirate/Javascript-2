@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../dist/css/styles.css">
+  <script src="../../js/index.mjs" defer type="module"></script>
+  <script src="https://kit.fontawesome.com/7bac96c235.js" crossorigin="anonymous"></script>
+  <title>CodeHub</title>
+</head>
+<body class="bg-dark bg-image">
+
+  <header class="border-bottom border-light">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a href="../../" class="navbar-brand">
+          <i class="fa-solid fa-signature"></i>
+          CodeHub</a>
+    </nav>
+  </header>
+
+  <main class="flex-grow-1 text-light d-flex">
+    <div class="container-fluid d-flex justify-content-center align-self-center">
+      <form id="registerForm" class=" bg-dark">
+        <div class="pt-3 px-3 border rounded">
+          <!-- {
+          "name": "VfGd",
+          "email": "user@example.com",
+          "banner": "url",
+          "avatar": "url",
+          "password": "stringst"
+        } -->
+
+          <div class="mb-3">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-control" type="text" name="name" required pattern="^[\w]+$" title="The name value must not contain punctuation symbols apart from underscore (_).">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="email">email</label>
+            <input class="form-control" type="email" name="email" required pattern="^[\w\-.]+@(stud.)?noroff.no$" title="The email value must be a valid stud.noroff.no or noroff.no email address.">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" name="password" required minlength="8" title="The password value must be at least 8 characters.">
+          </div>
+          <!-- <div class="mb-3">
+            <label class="form-label" for="avatar">Avatar</label>
+            <input class="form-control" type="url" name="avatar" placeholder="Optional">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="banner">Banner</label>
+            <input class="form-control" type="url" name="banner" placeholder="Optional">
+          </div> -->
+        </div>
+        
+        <div class="d-grid mt-3">
+          <button type="submit" class="btn btn-primary btn-block btn-block btn-lg">Register</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>
