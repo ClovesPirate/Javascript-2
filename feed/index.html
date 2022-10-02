@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/dist/css/styles.css">
+  <script src="../js/index.mjs" defer type="module"></script>
+  <script src="https://kit.fontawesome.com/7bac96c235.js" crossorigin="anonymous"></script>
+  <title>CodeHub | Feed</title>
+</head>
+<body class="bg-dark bg-image">
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a href="/feed/" class="navbar-brand">
+          <i class="fa-solid fa-signature"></i>
+          CodeHub
+        </a>
+        <a class="btn btn-primary" href="../">Logout</a>
+      </div>
+    </nav>
+  </header>
+  <main class="text-light">
+      <div class="container-sm p-md-3 p-3 mt-5 row bg-light rounded col-md mx-auto">
+        <div class="profile col-sm text-dark">
+            <h1 class="fw-bold text-primary">Meghan Reed</h1>
+            <div>
+              <p class="fw-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, quod, odio soluta doloremque qui quo distinctio nesciunt fugit nam debitis dolorum necessitatibus? Dolorum eveniet reiciendis vel repellendus architecto suscipit iure velit sequi sed, dicta beatae perspiciatis voluptas tempora odio nihil dolorem commodi, saepe mollitia quae officia. Dignissimos nostrum a esse!</p>
+            </div>
+        </div>
+        <form class="col-sm text-dark" id="postForm">
+  
+          <!-- {
+            "title": "string",
+            "body": "string",
+            "tags": [
+              "string"
+            ],
+            "media": "string"
+          } -->
+    
+    
+          <div class="mb-3 col-4">
+            <label class="form-label" for="name">Title</label>
+            <input class="form-control" type="text" name="title" required title="Please provide a title">
+          </div>
+    
+          <div class="mb-3">
+            <label class="form-label" for="body">What's on your mind?</label>
+            <textarea placeholder="Write something...." class="form-control" type="textarea" name="body" required title="Please provide a body" rows="6"></textarea>
+          </div>
+          
+          <div class="row">
+            <div class="mb-3 col">
+              <label class="form-label" for="tags">Tags</label>
+              <input class="form-control" type="text" name="tags" title="Label your post with tags">
+            </div>
+      
+            <div class="mb-3 col">
+              <label class="form-label" for="media">Image</label>
+              <input class="form-control" type="url" name="media" title="The name value must not contain punctuation symbols apart from underscore (_)." pattern="($uri)">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Publish</button>
+        </form>
+      </div>
+    </div>
+    <section class="container-sm mx-auto mt-5">
+        <h1>Feed</h1>
+      <div id="feedContainer" class="container-fluid">
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>
