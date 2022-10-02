@@ -1,0 +1,24 @@
+@import "variables"; /* src/scss/_variables.scss */
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  min-height: 100vh;
+}
+
+main {
+  min-height: 90vh;
+}
+
+.bg-image {
+  background-image: url(/media/images/bg-image.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+i {
+  color: $secondary;
+}
+
+.max-width {
+  max-width: 700px;
+}
