@@ -6,11 +6,12 @@ const method = 'POST';
 
 export async function createPost(postData) {
   const createPostURL = API_SOCIAL_URL + action;
-
-  const response = await authFetch(createPostURL, {
+  const headers = {
     method,
-    body: JSON.stringify(postData)
-  })
+    body: JSON.stringify(postData),
+  }
+
+  const response = await authFetch(createPostURL, headers);
 
   return await response.json();
 }
