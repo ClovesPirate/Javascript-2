@@ -4,6 +4,8 @@ import { load } from "../handlers/storage/index.mjs";
 export function postTemplate(postData) {
   const profile = load('profile');
 
+  console.log(postData);
+
   const post = document.createElement('article');
   const bodyContainer = document.createElement('div');
   const contentContainer = document.createElement('div');
@@ -93,16 +95,22 @@ export function renderBodyToTemplate(postData, parent) {
   const contentContainer = document.createElement('div');
   const header = document.createElement('div');
   const title = document.createElement('h3');
+  const time = document.createElement('span');
   const body = document.createElement('p');
   const media = document.createElement('img');
 
-  header.append(title);
+  header.append(title, time);
   contentContainer.append(header, media, body);
 
+  title.classList.add('text-break', 'text-bold', 'text-secondary', 'align-items-center');
+  header.classList.add('border-bottom', 'mb-2', 'd-flex', 'align-items-center');
+  time.classList.add('fs-6', 'text-muted', 'ms-2');
   media.classList.add('img-fluid');
+  body.classList.add('text-break');
 
   title.innerHTML = postData.title;
   body.innerHTML  = postData.body;
+  time.innerHTML = postData.created;
   media.src = postData.media;
 
   parent.append(contentContainer);
@@ -123,8 +131,6 @@ export function renderButtonToTemplate(postData, parent) {
 
   // Fetches single post by ID, returns the values of post id content to an update-form modal;
   button.addEventListener('click', () => {
-    // getPost(postData.id);
-
     return SinglePostTemplate(postData);
   });
 
@@ -137,14 +143,14 @@ export function renderAuthorToTemplate(postData, parent) {
 
   const author = document.createElement('p');
   author.classList.add('text-center', 'mt-1', 'text-break', 'fs-6');
-  author.innerHTML = postData.author.name;
+  author.innerHTML = `<i class="fa fa-user-circle me-1" aria-hidden="true"></i>${postData.author.name}`;
 
   const avatar = document.createElement('img');
   avatar.classList.add('mx-auto','d-block', 'avatar');
   avatar.src = postData.author.avatar;
 
   if( postData.author.avatar === "") {
-    avatar.src = '../../../media/images/stock-avatar.jpg';
+    avatar.src = '../../../media/images/stock-avatar.png';
   }
 
   authorContainer.append(avatar, author);

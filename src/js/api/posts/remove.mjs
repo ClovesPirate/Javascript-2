@@ -10,9 +10,9 @@ export async function removePost(id) {
   }
 
   const deletePostURL = `${API_SOCIAL_URL}${action}${id}`;
-  const response = await authFetch(deletePostURL, {
+  const result = await authFetch(deletePostURL, {
     method,
   })
 
-  return await response.json();
+  return result;
 }

@@ -9,9 +9,20 @@ export function headers() {
   }
 };
 
+// export async function authFetch(url, options = {}) {
+//   return fetch(url, {
+//     ...options,
+//     headers: headers(),
+//   })
+// }
+
 export async function authFetch(url, options = {}) {
-  return fetch(url, {
+  const response = await fetch(url, {
     ...options,
     headers: headers(),
   })
+  if (response.ok) {
+    return await response.json();
+  }
+  throw new Error(`${response.status} ${response.statusText}`);
 }

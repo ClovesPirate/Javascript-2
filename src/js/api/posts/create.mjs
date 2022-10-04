@@ -11,7 +11,7 @@ export async function createPost(postData) {
     body: JSON.stringify(postData),
   }
 
-  const response = await authFetch(createPostURL, headers);
+  const result = await authFetch(createPostURL, headers);
 
-  return await response.json();
+  return result;
 }
