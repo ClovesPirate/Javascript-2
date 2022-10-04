@@ -16,10 +16,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
         <a href="/feed/" class="navbar-brand">
-          <i class="fa-solid fa-signature"></i>
+          <img class="img-fluid logo" src="/media/images/stock-avatar.png" alt="logo">
           CodeHub
         </a>
-        <a class="btn btn-primary btn-sm" href="../">Logout</a>
+        <a id="logout" class="btn btn-primary btn-sm" href="../">Logout</a>
       </div>
     </nav>
   </header>
@@ -123,7 +123,7 @@
 
     <section class="container-fluid mt-3">
       <div class="mb-3 d-flex align-self-center">
-        <h2 class="me-2">Feed</h2>
+        <h2 class="me-2">Browse</h2>
         <div class="input-group input-group-sm">
           <input class="form-control mx-2" type="search" name="search" placeholder="search" id="filterPosts">
         </div>
@@ -131,8 +131,8 @@
           <button data-bs-toggle="dropdown" class="btn btn-secondary d-flex align-items-center btn-sm dropdown-toggle"><i class="fa fa-filter me-3" aria-hidden="true"></i>
             Filter</button>
           <ul class="dropdown-menu">
-            <li><a href="#" class="dropdown-item">Newest</a></li>
-            <li><a href="#" class="dropdown-item">Oldest</a></li>
+            <li><a class="dropdown-item" id="ascending">Ascending</a></li>
+            <li><a class="dropdown-item" id="descending">Descending</a></li>
           </ul>
         </div>
       </div>
