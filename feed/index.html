@@ -10,7 +10,7 @@
   <script src="https://kit.fontawesome.com/7bac96c235.js" crossorigin="anonymous"></script>
   <title>CodeHub | Feed</title>
 </head>
-<body class="bg-dark bg-image">
+<body class="bg-dark">
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -23,15 +23,16 @@
       </div>
     </nav>
   </header>
+
   <main class="text-light">
-      <div class="container-sm p-md-3 p-3 mt-5 row rounded col-md mx-auto bg-light text-dark">
-        <div class="profile col-sm">
-            <h1 class="fw-bold text-primary">Truls_Haha</h1>
+      <div class="container-fluid row border-bottom border-top py-4">
+        <div class="profile col-sm border-end px-4">
+            <h1 class="fw-bold text-secondary">Truls_Haha</h1>
             <div>
               <p class="fw-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, quod, odio soluta doloremque qui quo distinctio nesciunt fugit nam debitis dolorum necessitatibus? Dolorum eveniet reiciendis vel repellendus architecto suscipit iure velit sequi sed, dicta beatae perspiciatis voluptas tempora odio nihil dolorem commodi, saepe mollitia quae officia. Dignissimos nostrum a esse!</p>
             </div>
         </div>
-        <form class="col-sm" id="createPostForm">
+        <form class="col-sm px-4" id="createPostForm">
   
           <!-- {
             "title": "string",
@@ -68,12 +69,76 @@
         </form>
       </div>
     </div>
-    <section class="container-sm mx-auto mt-5">
+
+
+    <div class="modal text-dark" tabindex="-1" id="updatePost">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title">Update Post</p>
+            <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="col-sm" id="updatePostForm">
+  
+              <!-- {
+                "title": "string",
+                "body": "string",
+                "tags": [
+                  "string"
+                ],
+                "media": "string"
+              } -->
+        
+        
+              <div class="mb-3 col-4">
+                <label class="form-label" for="name">Title</label>
+                <input class="form-control" type="text" name="title" required title="Please provide a title" placeholder="Be creative...">
+              </div>
+        
+              <div class="mb-3">
+                <label class="form-label" for="body">What's on your mind?</label>
+                <textarea placeholder="Write something...." class="form-control" type="textarea" name="body" required title="Please provide a body" rows="6"></textarea>
+              </div>
+
+              <input type="hidden" name="id">
+              
+              <div class="row">
+                <div class="mb-3 col">
+                  <label class="form-label" for="tags">Tags</label>
+                  <input class="form-control" type="text" name="tags" title="Label your post with tags">
+                </div>
+          
+                <div class="mb-3 col">
+                  <label class="form-label" for="media">Image</label>
+                  <input class="form-control" type="url" name="media" title="Must be a direct image url">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Update Post</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="container-fluid mt-5">
+      <div class="bg-light">
         <h1>Feed</h1>
-      <div id="feedContainer" class="container-fluid">
+      </div>
+      <div id="feedContainer" class="container-fluid row">
 
       </div>
     </section>
+  
+  <div class="modal text-dark" id="singlePost">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body" id="postBody"></div>
+      </div>
+
+      </div>
+    </div>
+  </div>
   </main>
 
   <footer>

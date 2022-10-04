@@ -10780,12 +10780,23 @@ main {
   background-repeat: no-repeat;
 }
 
-i {
-  color: rgb(209, 179, 209);
-}
-
 .max-width {
   max-width: 700px;
+}
+
+.post {
+  transition: transform 200ms ease-in-out;
+}
+
+.post:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  z-index: 99;
+}
+
+.avatar {
+  width: 60px;
+  aspect-ratio: 1;
 }
 
 /*# sourceMappingURL=styles.css.map */
