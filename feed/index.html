@@ -19,20 +19,20 @@
           <i class="fa-solid fa-signature"></i>
           CodeHub
         </a>
-        <a class="btn btn-primary" href="../">Logout</a>
+        <a class="btn btn-primary btn-sm" href="../">Logout</a>
       </div>
     </nav>
   </header>
 
   <main class="text-light">
-      <div class="container-fluid row border-bottom border-top py-4">
+      <div class="container-fluid row border-bottom border-top py-4 bg-image">
         <div class="profile col-sm border-end px-4">
-            <h1 class="fw-bold text-secondary">Truls_Haha</h1>
+            <h1 class="fw-bold text-secondary">Username</h1>
             <div>
               <p class="fw-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, quod, odio soluta doloremque qui quo distinctio nesciunt fugit nam debitis dolorum necessitatibus? Dolorum eveniet reiciendis vel repellendus architecto suscipit iure velit sequi sed, dicta beatae perspiciatis voluptas tempora odio nihil dolorem commodi, saepe mollitia quae officia. Dignissimos nostrum a esse!</p>
             </div>
         </div>
-        <form class="col-sm px-4" id="createPostForm">
+        <form class="col-sm px-4 bg-image" id="createPostForm">
   
           <!-- {
             "title": "string",
@@ -121,11 +121,25 @@
       </div>
     </div>
 
-    <section class="container-fluid mt-5">
-      <div class="bg-light">
-        <h1>Feed</h1>
+    <section class="container-fluid mt-3">
+      <div class="mb-3 d-flex align-self-center">
+        <h2 class="me-2">Feed</h2>
+        <div class="input-group input-group-sm">
+          <input class="form-control mx-2" type="search" name="search" placeholder="search" id="filterPosts">
+        </div>
+        <div class="dropdown d-flex">
+          <button data-bs-toggle="dropdown" class="btn btn-secondary d-flex align-items-center btn-sm dropdown-toggle"><i class="fa fa-filter me-3" aria-hidden="true"></i>
+            Filter</button>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="dropdown-item">Newest</a></li>
+            <li><a href="#" class="dropdown-item">Oldest</a></li>
+          </ul>
+        </div>
       </div>
-      <div id="feedContainer" class="container-fluid row">
+      <div  class="container-fluid">
+        <div id="feedContainer" class="row">
+
+        </div>
 
       </div>
     </section>

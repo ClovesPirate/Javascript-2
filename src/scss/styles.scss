@@ -25,11 +25,9 @@ main {
 
 .post:hover {
   cursor: pointer;
-  transform: scale(1.1);
-  z-index: 99;
 }
 
 .avatar {
-  width: 60px;
+  width: clamp(3em, 10vw, 10em);
   aspect-ratio: 1;
 }

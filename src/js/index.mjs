@@ -17,11 +17,14 @@ if (path === '/profile/login/') {
   setCreatePostFormListener();
   setUpdatePostFormListener();
 
-  // Temporary
-  async function testProfileTemplate() {
-    const profile = await getProfile();
-    console.log(profile);
-    }
+ 
+
+
+  // // Temporary
+  // async function testProfileTemplate() {
+  //   const profile = await getProfile();
+  //   console.log(profile);
+  //   }
   
-  testProfileTemplate();
+  // testProfileTemplate();
 }
