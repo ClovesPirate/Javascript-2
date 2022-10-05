@@ -19,12 +19,14 @@ export async function login(profile) {
   const response = await fetch(loginURL, options);
   const { accessToken, ...profile } = await response.json();
 
-  storage.save('token', accessToken);
-  storage.save('profile', profile);
-  location.href = '/feed/';
-
+  if(response.ok) {
+    storage.save('token', accessToken);
+    storage.save('profile', profile);
+    location.href = '/feed/';
   }
-  catch(error) {
+
+  } catch(error) {
+    alert('An error occured attempting to log in');
     console.log(error);
   }
 }

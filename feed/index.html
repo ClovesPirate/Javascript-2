@@ -25,14 +25,14 @@
   </header>
 
   <main class="text-light">
-      <div class="container-fluid row border-bottom border-top py-4 bg-image">
-        <div class="profile col-sm border-end px-4">
+      <div class="container-fluid g-0 row border-bottom border-top pb-4 bg-image mx-auto">
+        <div class="profile col-sm border-end px-4 mt-3">
             <h1 class="fw-bold text-secondary">Username</h1>
             <div>
               <p class="fw-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, quod, odio soluta doloremque qui quo distinctio nesciunt fugit nam debitis dolorum necessitatibus? Dolorum eveniet reiciendis vel repellendus architecto suscipit iure velit sequi sed, dicta beatae perspiciatis voluptas tempora odio nihil dolorem commodi, saepe mollitia quae officia. Dignissimos nostrum a esse!</p>
             </div>
         </div>
-        <form class="col-sm px-4 bg-image" id="createPostForm">
+        <form class="col-sm px-4 bg-image mt-3" id="createPostForm">
   
           <!-- {
             "title": "string",
@@ -121,8 +121,8 @@
       </div>
     </div>
 
-    <section class="container-fluid mt-3">
-      <div class="mb-3 d-flex align-self-center">
+    <section class="container-fluid g-0 mt-3">
+      <div class="mb-3 d-flex align-self-center px-4">
         <h2 class="me-2">Browse</h2>
         <div class="input-group input-group-sm">
           <input class="form-control mx-2" type="search" name="search" placeholder="search" id="filterPosts">
@@ -144,15 +144,41 @@
       </div>
     </section>
   
-  <div class="modal text-dark" id="singlePost">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body" id="postBody"></div>
-      </div>
+    <div class="modal" id="singlePost">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header bg-info">
+            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
 
+          </div>
+          <div class="modal-body bg-info bg-image">
+            <div id="postBody">
+              
+            </div>
+            <div>
+              <div class="row">
+                <div class="commentSection col-md-6">
+
+                </div>
+                <form class="col-md-6" id="commentForm">
+                  <textarea class="form-control bg-info text-light" type="textarea" name="body" required></textarea>
+                  <input type="hidden" name="id">
+                  <div class="d-grid mt-2">
+                  
+                    <button type="submit" class="btn btn-primary">Comment</button>
+                  </div>
+                </form>
+              </div>
+              
+            </div>
+          </div>
+          <!-- <div class="modal-footer">
+
+          </div> -->
+        </div>
       </div>
     </div>
-  </div>
+
   </main>
 
   <footer>

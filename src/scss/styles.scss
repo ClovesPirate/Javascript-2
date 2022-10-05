@@ -15,6 +15,12 @@ main {
   background-repeat: no-repeat;
 }
 
+.post-bg {
+  background-image: url(/media/images/bg-image.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .max-width {
   max-width: 700px;
 }
@@ -39,4 +45,13 @@ main {
 
 .btn + .btn {
   margin: 0 .5em;
+}
+
+.form-control {
+  border-radius: 0;
+  border: 1px solid $light;
+}
+
+.btn-close {
+  background-color: #FFF;
 }

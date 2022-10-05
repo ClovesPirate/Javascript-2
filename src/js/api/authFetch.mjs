@@ -9,13 +9,6 @@ export function headers() {
   }
 };
 
-// export async function authFetch(url, options = {}) {
-//   return fetch(url, {
-//     ...options,
-//     headers: headers(),
-//   })
-// }
-
 export async function authFetch(url, options = {}) {
   const response = await fetch(url, {
     ...options,
