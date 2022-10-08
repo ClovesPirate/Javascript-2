@@ -26,13 +26,15 @@
 
   <main class="text-light">
       <div class="container-fluid g-0 row border-bottom border-top pb-4 bg-image mx-auto">
-        <div class="profile col-sm border-end px-4 mt-3">
-            <h1 class="fw-bold text-secondary">Username</h1>
-            <div>
-              <p class="fw-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, quod, odio soluta doloremque qui quo distinctio nesciunt fugit nam debitis dolorum necessitatibus? Dolorum eveniet reiciendis vel repellendus architecto suscipit iure velit sequi sed, dicta beatae perspiciatis voluptas tempora odio nihil dolorem commodi, saepe mollitia quae officia. Dignissimos nostrum a esse!</p>
-            </div>
+        <div id="bannerContainer">
+          <div class="d-flex align-items-center">
+            <strong>Loading...</strong>
+            <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+          </div>
         </div>
-        <form class="col-sm px-4 bg-image mt-3" id="createPostForm">
+        <div class="col-lg-6 border-end px-4 mt-3 profile" id="profileContainer">
+        </div>
+        <form class="col-lg-6 px-4 bg-image mt-3" id="createPostForm">
   
           <!-- {
             "title": "string",

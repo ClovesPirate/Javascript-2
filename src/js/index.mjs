@@ -1,4 +1,6 @@
 import * as handler from '../js/handlers/index.mjs';
+import { authFetch } from './api/authFetch.mjs';
+import { getProfile } from './api/profile/read.mjs';
 
 const path = location.pathname;
 
@@ -14,4 +16,5 @@ if (path === '/profile/login/') {
   handler.setFilterPostListener();
   handler.setLogoutEventListener();
   handler.setCreateCommentListener();
+  handler.setGetProfile();
 }

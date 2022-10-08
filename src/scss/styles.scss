@@ -3,6 +3,8 @@
 
 body {
   min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 main {
@@ -34,7 +36,12 @@ main {
 }
 
 .avatar {
-  width: clamp(3em, 10vw, 8em);
+  width: clamp(3em, 8vw, 6em);
+  aspect-ratio: 1;
+}
+
+.avatar-sm {
+  width: 7em;
   aspect-ratio: 1;
 }
 
@@ -43,12 +50,27 @@ main {
   aspect-ratio: 1;
 }
 
-.btn + .btn {
-  margin: 0 .5em;
-}
-
 .form-control {
   border-radius: 0;
   // border: 1px solid $light;
   background-color: rgb(246, 246, 246);
+}
+
+.customButton {
+  border-radius: 0;
+  margin: 0;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.myPosts {
+  height: 12.5em;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.loadingContainer {
+  min-height: 50em;
 }

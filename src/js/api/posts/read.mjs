@@ -10,3 +10,10 @@ export async function getPosts() {
 
   return result;
 }
+
+export async function getPost(id) {
+  const getPostURL = `${API_SOCIAL_URL}${action}${id}${details}`
+  const result = await authFetch(getPostURL);
+
+  return result;
+}

@@ -9,8 +9,8 @@ export function postTemplate(postData) {
   const contentContainer = document.createElement('div');
   const interactionContainer = document.createElement('div');
 
-  post.classList.add('post', 'mb-3', 'bg-info', 'p-sm-3', 'py-3');
-  contentContainer.classList.add('ps-4', 'col-sm-10', 'col-9');
+  post.classList.add('post', 'mb-3', 'bg-info', 'py-3');
+  contentContainer.classList.add('ps-4', 'col-9');
   interactionContainer.classList.add('d-flex', 'mt-2', 'justify-content-end');
   bodyContainer.classList.add('row');
 
@@ -72,12 +72,14 @@ export function SinglePostTemplate(postData) {
 
 export function renderUpdatePost(postData) {
 
+  const { title, body, tags, id, media } = postData
+
   const form = document.querySelector('#updatePostForm');
-  form.title.value = postData.title;
-  form.body.value = postData.body;
-  form.tags.value = postData.tags;
-  form.id.value = postData.id;
-  form.media.value = postData.media;
+  form.title.value = title;
+  form.body.value = body;
+  form.tags.value = tags;
+  form.id.value = id;
+  form.media.value = media;
 
   return form;
 }
@@ -150,7 +152,7 @@ export function renderButtonToTemplate(postData, parent) {
 
 export function renderAuthorToTemplate(postData, parent) {
   const authorContainer = document.createElement('div');
-  authorContainer.classList.add('border-end', 'px-sm-2', 'my-sm-2', 'author', 'col-sm-2', 'col-3')
+  authorContainer.classList.add('border-end', 'my-sm-2', 'author', 'col-3')
 
   const author = document.createElement('p');
   author.classList.add('text-center', 'mt-1', 'text-break', 'fs-6');
@@ -161,7 +163,7 @@ export function renderAuthorToTemplate(postData, parent) {
   avatar.src = postData.author.avatar;
 
   if( postData.author.avatar === "") {
-    avatar.src = '../../../media/images/stock-avatar.png';
+    avatar.src = '../../../media/images/stock-avatar.jpg';
   }
 
   authorContainer.append(avatar, author);
@@ -172,7 +174,10 @@ export function renderAuthorToTemplate(postData, parent) {
 
 export function renderConditionalInteraction(profile, postData, parent) {
 
-  if (profile.name === postData.author.name) {
+  const { author } = postData;
+  const { name } = author;
+ 
+  if (profile.name === name) {
 
     const editButton = document.createElement('button');
     editButton.classList.add('btn', 'btn-secondary', 'btn-sm');

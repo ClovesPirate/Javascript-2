@@ -6,14 +6,12 @@ const action = '/profiles/';
 const details = '?_posts=true&_following=true&_followers=true';
 
 export async function getProfile() {
+  const { name } = load('profile');
 
-  const profile = load('profile');
-  const username = profile.name;
+  const getProfileURL = `${API_SOCIAL_URL}${action}${name}${details}`;
 
-  const getPostURL = `${API_SOCIAL_URL}${action}${username}${details}`;
+  const result = await authFetch(getProfileURL);
+  console.log(result);
 
-  const response = await authFetch(getPostURL);
-  
-
-  return await response.json();
+  return result;
 }
