@@ -15,8 +15,8 @@ export async function handleNameControlInput(event) {
   const result = posts.filter((post) => {
     if (post.title.toLowerCase().startsWith(inputValue)) {
       return true;
-    }
-    
+    } else if (post.author.name.toLowerCase().startsWith(inputValue))
+      return true;
   });
 
   container.innerHTML = "";

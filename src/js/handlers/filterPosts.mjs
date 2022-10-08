@@ -11,7 +11,6 @@ export async function setFilterPostListener() {
 
 export async function handleFilterAscending() {
   const filteredPosts = await getFilteredPostsAscending();
-  console.log(filteredPosts)
   const container = document.querySelector('#feedContainer');
   container.innerHTML = "";
   
@@ -20,7 +19,6 @@ export async function handleFilterAscending() {
 
 export async function handleFilterDescending() {
   const filteredPosts = await getFilteredPostsDescending();
-  console.log(filteredPosts);
   const container = document.querySelector('#feedContainer');
   container.innerHTML = "";
 

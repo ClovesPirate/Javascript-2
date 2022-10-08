@@ -125,7 +125,7 @@
       <div class="mb-3 d-flex align-self-center px-4">
         <h2 class="me-2">Browse</h2>
         <div class="input-group input-group-sm">
-          <input class="form-control mx-2" type="search" name="search" placeholder="search" id="filterPosts">
+          <input class="form-control mx-2" type="search" name="search" placeholder="search by author or title" id="filterPosts">
         </div>
         <div class="dropdown d-flex">
           <button data-bs-toggle="dropdown" class="btn btn-secondary d-flex align-items-center btn-sm dropdown-toggle"><i class="fa fa-filter me-3" aria-hidden="true"></i>
@@ -136,11 +136,13 @@
           </ul>
         </div>
       </div>
+
+      <!-- PostContainer -->
       <div  class="container-fluid">
-        <div id="feedContainer" class="row">
+        <div id="feedContainer" class="row justify-content-center px-4">
+          <!-- POSTS goes here -->
 
         </div>
-
       </div>
     </section>
   
@@ -151,7 +153,7 @@
             <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
 
           </div>
-          <div class="modal-body bg-info bg-image">
+          <div class="modal-body bg-info">
             <div id="postBody">
               
             </div>

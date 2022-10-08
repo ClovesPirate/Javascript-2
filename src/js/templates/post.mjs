@@ -9,7 +9,7 @@ export function postTemplate(postData) {
   const contentContainer = document.createElement('div');
   const interactionContainer = document.createElement('div');
 
-  post.classList.add('post', 'mb-3', 'bg-info', 'p-sm-3', 'border-top', 'border-bottom', 'me-1', 'post-bg', 'py-3');
+  post.classList.add('post', 'mb-3', 'bg-info', 'p-sm-3', 'py-3');
   contentContainer.classList.add('ps-4', 'col-sm-10', 'col-9');
   interactionContainer.classList.add('d-flex', 'mt-2', 'justify-content-end');
   bodyContainer.classList.add('row');
@@ -141,6 +141,7 @@ export function renderButtonToTemplate(postData, parent) {
     form.id.value = "";
     form.id.value = postData.id;
 
+    console.log(postData);
     return SinglePostTemplate(postData);
   });
 
