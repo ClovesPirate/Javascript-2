@@ -4,14 +4,16 @@ const form = document.querySelector('#createPostForm');
 
 export function setCreatePostFormListener() {
   form.addEventListener('submit', (e) => {
-    e.preventDefault();
+    if (form) {
+      e.preventDefault();
   
-    const form = e.target;
-    const formData = new FormData(form);
-    const post = Object.fromEntries(formData.entries());
-    console.log(post);
-
-    createPost(post);
-    alert('Post created successfully.')
+      const form = e.target;
+      const formData = new FormData(form);
+      const post = Object.fromEntries(formData.entries());
+  
+      createPost(post);
+      alert('Post created successfully');
+      location.reload();
+    }
   });
 }

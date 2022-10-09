@@ -22,7 +22,10 @@ export async function login(profile) {
   if(response.ok) {
     storage.save('token', accessToken);
     storage.save('profile', profile);
+    alert('You have been successfully logged in');
     location.href = '/feed/';
+  } else {
+    throw new Error;
   }
 
   } catch(error) {

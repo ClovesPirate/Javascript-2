@@ -12,5 +12,6 @@ export async function setCreateCommentListener() {
 
     commentOnPost(comment);
     alert('Comment created successfully');
+    location.reload();
   });
 }

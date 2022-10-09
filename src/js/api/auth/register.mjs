@@ -18,8 +18,7 @@ export async function register(profile) {
   const response = await fetch(registerURL, options);
   const result = await response.json();
   return result;
-  }
-  catch(error) {
+  } catch(error) {
     console.log(error);
   }
 }

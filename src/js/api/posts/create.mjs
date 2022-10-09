@@ -13,5 +13,9 @@ export async function createPost(postData) {
 
   const result = await authFetch(createPostURL, headers);
 
+  if (result.ok) {
+    console.log('this');
+  }
+
   return result;
 }

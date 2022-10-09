@@ -29,18 +29,18 @@ export function profileTemplate(postData) {
   if (banner === "") {
     profileBanner.src = "../../../media/images/banner-100.jpg";
   } else {
-    return profileBanner.src = banner;
+    profileBanner.src = banner;
   }
 
   if (avatar === "") {
     profilePicture.src = "../../../media/images/stock-avatar.jpg";
   } else {
-    return profilePicture.src = avatar;
+    profilePicture.src = avatar;
   }
 
   headerContainer.classList.add('d-flex', 'pt-3');
   detailsContainer.classList.add('d-flex');
-  profileBanner.classList.add('img-fluid', 'banner', 'border-bottom', 'opacity-50');
+  profileBanner.classList.add('img-fluid', 'banner', 'd-block', 'mx-auto');
   profilePicture.classList.add('avatar-sm');
   editProfileButton.classList.add('btn', 'btn-primary', 'btn-sm');
   profile.classList.add('profile');
@@ -100,6 +100,11 @@ export function profileTemplate(postData) {
     editButton.innerHTML = `<i class="fa fa-pencil me-3" aria-hidden="true"></i>Edit
     `;
 
+    editProfileButton.setAttribute('data-bs-toggle', 'modal');
+    editProfileButton.setAttribute('data-bs-target', '#updateMedia');
+    editProfileButton.setAttribute('type', 'button');
+    editProfileButton.addEventListener('click', () => renderUpdateMedia(postData));
+
     postContainer.append(dropdown, contentContainer);
     postsContainer.append(postContainer);
   }) 
@@ -115,4 +120,14 @@ export function profileTemplate(postData) {
 
 export function renderProfileTemplate(postData, parent) {
   parent.append(profileTemplate(postData));
+}
+
+export function renderUpdateMedia(media) {
+  const { banner, avatar } = media;
+
+  const form = document.querySelector('#updateMediaForm');
+  form.banner.value = banner;
+  form.avatar.value = avatar;
+
+  return form;
 }

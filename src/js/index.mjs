@@ -16,4 +16,5 @@ if (path === '/profile/login/') {
   handler.setLogoutEventListener();
   handler.setCreateCommentListener();
   handler.setGetProfile();
+  handler.setUpdateMediaFormListener();
 }

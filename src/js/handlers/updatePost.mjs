@@ -11,6 +11,7 @@ export function setUpdatePostFormListener() {
     const post = Object.fromEntries(formData.entries());
 
     updatePost(post);
-    alert('Post has been successfuly updated')
+    alert('Post has been successfuly updated');
+    location.reload;
   });
 }

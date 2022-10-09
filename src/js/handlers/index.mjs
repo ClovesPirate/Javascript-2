@@ -8,3 +8,4 @@ export * from './searchPosts.mjs';
 export * from './updatePost.mjs';
 export * from './commentOnPost.mjs';
 export * from './getProfile.mjs';
+export * from './updateMedia.mjs';
