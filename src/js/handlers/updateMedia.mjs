@@ -1,4 +1,4 @@
-import { updateMedia } from "../api/profile/updateMedia.mjs";
+import { updateMedia } from '../api/profile/index.mjs';
 
 const form = document.querySelector('#updateMediaForm');
 

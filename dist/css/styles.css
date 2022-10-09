@@ -10768,7 +10768,7 @@ textarea.form-control-lg {
 }
 body {
   min-height: 100vh;
-  max-width: 1080px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -10801,12 +10801,13 @@ main {
 }
 
 .avatar {
-  width: clamp(3em, 8vw, 6em);
+  width: 4em;
+  border-radius: 100vw;
   aspect-ratio: 1;
 }
 
 .avatar-sm {
-  width: 7em;
+  width: 5em;
   aspect-ratio: 1;
 }
 
@@ -10841,6 +10842,10 @@ main {
 
 .banner {
   width: 100vw;
+}
+
+.width {
+  width: clamp(5em, 10vw, 3em);
 }
 
 /*# sourceMappingURL=styles.css.map */

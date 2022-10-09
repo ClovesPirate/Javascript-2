@@ -33,7 +33,7 @@
           </div>
         </div>
         <!-- Profile goes here -->
-        <div class="col-lg-6 border-end px-4 mt-3 profile" id="profileContainer">
+        <div class="col-lg-6 border-end px-3 mt-3 profile" id="profileContainer">
           <!-- Modal and form for update media -->
           <div class="modal text-dark" tabindex="-1" id="updateMedia">
             <div class="modal-dialog">
@@ -62,19 +62,11 @@
             </div>
           </div>
         </div>
-        <form class="col-lg-6 px-4 bg-image mt-3" id="createPostForm">
-  
-          <!-- {
-            "title": "string",
-            "body": "string",
-            "tags": [
-              "string"
-            ],
-            "media": "string"
-          } -->
-    
-    
-          <div class="mb-3 col-4">
+
+        <!-- Create Post Form -->
+        <form class="col-lg-6 px-3 mt-3" id="createPostForm">
+ 
+          <div class="mb-3 col-5">
             <label class="form-label" for="name">Title</label>
             <input class="form-control" type="text" name="title" required title="Please provide a title">
           </div>
@@ -150,13 +142,15 @@
         </div>
       </div>
     </div>
-
-    <section class="container-fluid g-0 mt-3">
-      <div class="mb-3 d-flex align-self-center px-4">
+    <!-- SEARCH AND FILTER -->
+    <section class="container-fluid mt-3 px-sm-3">
+      <div class="mb-3 d-flex align-self-center">
         <h2 class="me-2">Browse</h2>
+        <!-- SEARCH -->
         <div class="input-group input-group-sm">
           <input class="form-control mx-2" type="search" name="search" placeholder="search by author or title" id="filterPosts">
         </div>
+        <!-- FILTER -->
         <div class="dropdown d-flex">
           <button data-bs-toggle="dropdown" class="btn btn-secondary d-flex align-items-center btn-sm dropdown-toggle"><i class="fa fa-filter me-3" aria-hidden="true"></i>
             Filter</button>
@@ -169,15 +163,15 @@
 
       <!-- PostContainer -->
       <div  class="container-fluid">
-        <div id="feedContainer" class="row justify-content-center px-4">
+        <div id="feedContainer" class="row justify-content-center">
           <!-- POSTS goes here -->
 
         </div>
       </div>
     </section>
-  
+    <!-- Single post Modal -->
     <div class="modal" id="singlePost">
-      <div class="modal-dialog modal-xl">
+      <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
 
           <div class="modal-header bg-info">
@@ -186,31 +180,27 @@
 
           <div class="modal-body bg-info">
             <div id="postBody">
-              
+              <!-- Single Post content goes here -->
             </div>
             <div>
               <div class="row">
-                <div class="commentSection col-md-6">
-
-                </div>
-                <form class="col-md-6" id="commentForm">
-                  <textarea class="form-control bg-info text-light" type="textarea" name="body" required></textarea>
+                <form id="commentForm">
+                  <textarea class="form-control bg-info text-light" type="textarea" rows="4" name="body" required></textarea>
                   <input type="hidden" name="id">
                   <div class="d-grid mt-2">
-                  
                     <button type="submit" class="btn btn-primary">Comment</button>
                   </div>
                 </form>
+                <div id="commentSection">
+                  
+                </div>
               </div>
-              
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </main>
-
   <footer>
   </footer>
 </body>

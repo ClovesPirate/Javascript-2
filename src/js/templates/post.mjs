@@ -1,4 +1,6 @@
+
 import { removePost } from "../api/posts/remove.mjs";
+import { startFollowing, stopFollowing } from "../api/profile/index.mjs";
 import { load } from "../handlers/storage/index.mjs";
 
 export function postTemplate(postData) {
@@ -9,9 +11,9 @@ export function postTemplate(postData) {
   const contentContainer = document.createElement('div');
   const interactionContainer = document.createElement('div');
 
-  post.classList.add('post', 'mb-3', 'bg-info', 'py-3');
-  contentContainer.classList.add('ps-4', 'col-9');
-  interactionContainer.classList.add('d-flex', 'mt-2', 'justify-content-end');
+  post.classList.add('post', 'mb-3', 'bg-info', 'p-sm-4', 'p-3');
+  contentContainer.classList.add('px-sm-3', 'col-sm-10', 'col-8' );
+  interactionContainer.classList.add('d-flex', 'justify-content-end');
   bodyContainer.classList.add('row');
 
   // If profile name matches author of post 
@@ -41,9 +43,9 @@ export function SinglePostTemplate(postData) {
   const contentContainer = document.createElement('div');
   const interactionContainer = document.createElement('div');
 
-  post.classList.add('post', 'mb-3', 'p-sm-3', 'border-bottom', 'bg-info');
-  contentContainer.classList.add('ps-4', 'col-sm-10', 'col-9');
-  interactionContainer.classList.add('d-flex', 'mt-2', 'justify-content-end');
+  post.classList.add('post', 'mb-3', 'bg-info', 'p-sm-4', 'p-3');
+  contentContainer.classList.add('px-sm-3', 'col-sm-10', 'col-10' );
+  interactionContainer.classList.add('d-flex', 'justify-content-end');
   bodyContainer.classList.add('row');
 
   // post.innerHTML = "";
@@ -63,8 +65,9 @@ export function SinglePostTemplate(postData) {
   // Appends Interaction-container to post
   post.append(interactionContainer);
 
-  const postContainer = document.querySelector('#postBody');
+  renderCommentsToPost(postData);
 
+  const postContainer = document.querySelector('#postBody');
   postContainer.innerHTML = "";
   postContainer.append(post);
   return post;
@@ -93,32 +96,34 @@ export function renderPostTemplates(postDataList, parent) {
 }
 
 export function renderBodyToTemplate(postData, parent) {
+  const { title, body, media } = postData;
+
   const container = document.createElement('div');
   const header = document.createElement('div');
-  const title = document.createElement('h3');
-  const time = document.createElement('span');
-  const body = document.createElement('p');
-  const media = document.createElement('img');
-  const content = document.createElement('div');
+  const postTitle = document.createElement('h3');
+  const postBody = document.createElement('p');
+  const postContent = document.createElement('div');
 
-  header.append(title, time);
-  content.append(media, body);
-  container.append(header, content);
-
-  title.classList.add('text-break', 'text-bold', 'text-secondary', 'align-items-center');
-  header.classList.add('border-bottom', 'mb-2', 'd-flex', 'align-items-center');
-  time.classList.add('fs-6', 'text-muted', 'ms-2', 'align-items-center');
-  media.classList.add('img-fluid', 'col-sm-4');
-  body.classList.add('text-break', 'col-sm-8');
-
-  if (postData.media !==  "") {
-     content.classList.add('row');
+  if (media !== "") {
+    const postMedia = document.createElement('img');
+    postMedia.classList.add('img-fluid', 'col-sm-4');
+    postContent.append(postMedia);
+    postContent.classList.add('row');
+    postMedia.src = media;
   }
- 
-  title.innerHTML = postData.title;
-  body.innerHTML  = postData.body;
-  time.innerHTML = postData.created.split();
-  media.src = postData.media;
+  
+  header.append(postTitle);
+  postContent.append(postBody);
+  container.append(header, postContent);
+
+  postTitle.classList.add('text-break', 'text-bold', 'text-secondary', 'align-items-center', 'fs-2');
+  header.classList.add('d-flex', 'align-items-center');
+  
+  postBody.classList.add('text-break', 'col-sm-8');
+
+  postTitle.innerHTML = title;
+  postBody.innerHTML  = body;
+  
 
   parent.append(container);
 
@@ -152,21 +157,46 @@ export function renderButtonToTemplate(postData, parent) {
 
 export function renderAuthorToTemplate(postData, parent) {
   const authorContainer = document.createElement('div');
-  authorContainer.classList.add('border-end', 'my-sm-2', 'author', 'col-3')
+  authorContainer.classList.add('author', 'col-sm-2', 'col-4', 'd-block','border-end', 'justify-content-center', 'pe-4')
 
-  const author = document.createElement('p');
-  author.classList.add('text-center', 'mt-1', 'text-break', 'fs-6');
-  author.innerHTML = `<i class="fa fa-user-circle me-1" aria-hidden="true"></i>${postData.author.name}`;
+  const author = document.createElement('small');
+  author.classList.add( 'mt-2', 'text-break', 'fs-6', 'd-block', 'text-center');
+  author.innerHTML = `${postData.author.name}`;
 
   const avatar = document.createElement('img');
-  avatar.classList.add('mx-auto','d-block', 'avatar');
+  avatar.classList.add('d-block', 'avatar', 'mx-auto');
   avatar.src = postData.author.avatar;
+
+  const followButton = document.createElement('button');
+  followButton.classList.add('btn', 'btn-secondary', 'btn-sm');
+  followButton.innerHTML = '<i class="fa fa-heart" aria-hidden="true"></i>';
+  followButton.addEventListener('click', () => {
+    const { name } = postData.author;
+    startFollowing(name);
+    alert(`You are now following${name}`);
+    location.reload();
+  })
+
+  const unFollowButton = document.createElement('button');
+  unFollowButton.classList.add('btn', 'btn-primary', 'btn-sm');
+  unFollowButton.innerHTML = '<i class="fas fa-heart-broken"></i>';
+  unFollowButton.addEventListener('click', () => {
+    const { name } = postData.author;
+    stopFollowing(name);
+    alert(`You are no longer following${name}`);
+    location.reload();
+  })
 
   if( postData.author.avatar === "") {
     avatar.src = '../../../media/images/stock-avatar.jpg';
   }
 
-  authorContainer.append(avatar, author);
+  const buttonContainer = document.createElement('div');
+  buttonContainer.classList.add('d-grid', 'mx-auto', 'mt-2')
+  const detailsContainer = document.createElement('div');
+  detailsContainer.append(avatar, author)
+  buttonContainer.append(followButton, unFollowButton);
+  authorContainer.append(detailsContainer, buttonContainer);
   parent.append(authorContainer);
 
   return author;
@@ -202,3 +232,26 @@ export function renderConditionalInteraction(profile, postData, parent) {
     return wrapper;
   }
 };
+
+export function renderCommentsToPost(postData) {
+  const commentContainer = document.querySelector('#commentSection');
+  commentContainer.innerHTML = "";
+  const { comments } = postData;
+
+  comments.forEach(comment => {
+    const { body, owner } = comment;
+    const content = document.createElement('small');
+    const creator = document.createElement('strong');
+    const container = document.createElement('div');
+    container.classList.add('mt-3', 'p-2', 'border-start', 'px-3', 'bg-dark')
+    creator.classList.add('fs-5');
+    content.classList.add('fs-6', 'd-block');
+
+    content.innerHTML = body;
+    creator.innerHTML = owner;
+
+    container.append(creator, content);
+    commentContainer.append(container);
+    return commentContainer;
+  })
+}

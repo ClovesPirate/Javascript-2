@@ -5,4 +5,5 @@ export async function setGetPosts() {
   const posts = await getPosts();
   const container = document.querySelector('#feedContainer');
   renderPostTemplates(posts, container);
+  console.log(posts);
 }
