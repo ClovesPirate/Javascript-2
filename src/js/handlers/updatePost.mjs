@@ -2,6 +2,9 @@ import { updatePost } from "../api/posts/update.mjs";
 
 const form = document.querySelector('#updatePostForm');
 
+/**
+ * Handler for update post form listener
+ */
 export function setUpdatePostFormListener() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();

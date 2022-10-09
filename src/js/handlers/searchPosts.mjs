@@ -7,6 +7,12 @@ export async function setSearchPostsFormListener() {
   searchControl.addEventListener('keyup', handleNameControlInput);
 }
 
+/**
+ * Handler for search functionality
+ * @param {event} event 
+ * @returns results with corresponding inputvalue
+ * @example input: post - returns entries beginning with the title "post...", or author "post..."
+ */
 export async function handleNameControlInput(event) {
   const container = document.querySelector('#feedContainer')
   const posts =  await getPosts();

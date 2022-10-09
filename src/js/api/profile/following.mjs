@@ -4,6 +4,12 @@ import { API_SOCIAL_URL } from "../constants.mjs";
 const action = '/profiles/';
 const method = 'PUT';
 
+/**
+ * 
+ * @param {string} name 
+ * @returns Stop following {name}
+ */
+
 export async function stopFollowing(name) {
   const unfollow = '/unfollow';
 
@@ -16,6 +22,11 @@ export async function stopFollowing(name) {
   return result
 }
 
+/**
+ * 
+ * @param {string} name 
+ * @returns start following {name}
+ */
 export async function startFollowing(name) {
   const follow = '/follow';
 

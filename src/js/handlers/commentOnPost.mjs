@@ -1,7 +1,9 @@
 import { commentOnPost } from "../api/posts/comment.mjs";
 
 const form = document.querySelector('#commentForm');
-
+/**
+ * Handler for create comment listener
+ */
 export async function setCreateCommentListener() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();

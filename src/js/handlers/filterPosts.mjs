@@ -4,6 +4,7 @@ import { renderPostTemplates } from "../templates/post.mjs";
   const ascendingTarget = document.querySelector('#ascending');
   const descendingTarget = document.querySelector('#descending');
 
+
 export async function setFilterPostListener() {
   ascendingTarget.addEventListener('click', handleFilterAscending);
   descendingTarget.addEventListener('click', handleFilterDescending)

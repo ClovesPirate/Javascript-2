@@ -3,24 +3,33 @@ import { removePost } from "../api/posts/remove.mjs";
 import { startFollowing, stopFollowing } from "../api/profile/index.mjs";
 import { load } from "../handlers/storage/index.mjs";
 
+/**
+ * HTML template for posts
+ * @param {object} postData 
+ * @returns A HTML template for fetched data
+ */
 export function postTemplate(postData) {
   const profile = load('profile');
 
+  // Elements
   const post = document.createElement('article');
   const bodyContainer = document.createElement('div');
   const contentContainer = document.createElement('div');
   const interactionContainer = document.createElement('div');
 
+  // Classes
   post.classList.add('post', 'mb-3', 'bg-info', 'p-sm-4', 'p-3');
   contentContainer.classList.add('px-sm-3', 'col-sm-10', 'col-8' );
   interactionContainer.classList.add('d-flex', 'justify-content-end');
   bodyContainer.classList.add('row');
 
+  // === Appending ==== //
+
   // If profile name matches author of post 
   // Renders ((button: delete)(button: edit)) with listeners: removePost(), renderUpdatePost();
   renderConditionalInteraction(profile, postData, interactionContainer);
 
-  // Renders (avatar, author)(title) to post
+  // Renders (avatar, author) to post
   renderAuthorToTemplate(postData, bodyContainer); // See to change values
 
   // Renders (media, body-content, comment-button) to post
@@ -38,26 +47,26 @@ export function postTemplate(postData) {
 export function SinglePostTemplate(postData) {
   const profile = load('profile');
 
+  // Elements
   const post = document.createElement('article');
   const bodyContainer = document.createElement('div');
   const contentContainer = document.createElement('div');
   const interactionContainer = document.createElement('div');
 
+  // Classes
   post.classList.add('post', 'mb-3', 'bg-info', 'p-sm-4', 'p-3');
   contentContainer.classList.add('px-sm-3', 'col-sm-10', 'col-10' );
   interactionContainer.classList.add('d-flex', 'justify-content-end');
   bodyContainer.classList.add('row');
 
-  // post.innerHTML = "";
-
   // If profile name matches author of post 
-  // Renders ((button: delete)(button: edit)) with listeners: removePost(), renderUpdatePost();
+  // Appends ((button: delete)(button: edit)) with listeners: removePost(), renderUpdatePost();
   renderConditionalInteraction(profile, postData, interactionContainer);
 
-  // Renders (avatar, author)(title) to post
+  // Appends (avatar, author) to post
   renderAuthorToTemplate(postData, bodyContainer); // See to change values
 
-  // Renders (media, body-content, comment-button) to post
+  // Appends (title, media, body-content, comment-button) to post
   renderBodyToTemplate(postData, contentContainer);
   bodyContainer.append(contentContainer);
   post.append(bodyContainer);
@@ -67,12 +76,18 @@ export function SinglePostTemplate(postData) {
 
   renderCommentsToPost(postData);
 
+  // Clear content of modal
   const postContainer = document.querySelector('#postBody');
   postContainer.innerHTML = "";
   postContainer.append(post);
   return post;
 }
 
+/**
+ * Function for setting content of updateForm with current values
+ * @param { {title: string, body: string, tags: string, id: number, media: URL }} postData 
+ * @returns renders updateform with current values of post
+ */
 export function renderUpdatePost(postData) {
 
   const { title, body, tags, id, media } = postData
@@ -87,23 +102,40 @@ export function renderUpdatePost(postData) {
   return form;
 }
 
+/**
+ * @param {object} postData first value
+ * @param {element} parent second value
+ */
+
 export function renderPostTemplate(postData, parent) {
   parent.append(postTemplate(postData));
 }
 
+/**
+ * @param {[object]} postDataList 
+ * @param {element} parent 
+ */
 export function renderPostTemplates(postDataList, parent) {
   parent.append(...postDataList.map(postTemplate));
 }
 
+/**
+ * 
+ * @param {object} postData first value
+ * @param {element} parent second value
+ * @returns container with content from {postData} with styling
+ */
 export function renderBodyToTemplate(postData, parent) {
   const { title, body, media } = postData;
 
+  // Elements
   const container = document.createElement('div');
   const header = document.createElement('div');
   const postTitle = document.createElement('h3');
   const postBody = document.createElement('p');
   const postContent = document.createElement('div');
 
+  // Content added if condition is met
   if (media !== "") {
     const postMedia = document.createElement('img');
     postMedia.classList.add('img-fluid', 'col-sm-4');
@@ -112,24 +144,30 @@ export function renderBodyToTemplate(postData, parent) {
     postMedia.src = media;
   }
   
+  // Appending
   header.append(postTitle);
   postContent.append(postBody);
   container.append(header, postContent);
 
+  // Classes
   postTitle.classList.add('text-break', 'text-bold', 'text-secondary', 'align-items-center', 'fs-2');
   header.classList.add('d-flex', 'align-items-center');
-  
   postBody.classList.add('text-break', 'col-sm-8');
 
+  // HTML values
   postTitle.innerHTML = title;
   postBody.innerHTML  = body;
   
-
   parent.append(container);
-
   return container;
 }
 
+/**
+ * 
+ * @param {object} postData 
+ * @param {element} parent 
+ * @returns returns button with content and styling from {postData}
+ */
 export function renderButtonToTemplate(postData, parent) {
   const button = document.createElement('button');
   button.classList.add('btn', 'btn-primary', 'btn-sm');
@@ -142,13 +180,13 @@ export function renderButtonToTemplate(postData, parent) {
 
   parent.append(button);
 
-  // Fetches single post by ID, returns the values of post id content to an update-form modal;
+  // Pulls up single post in a modal with comment section and form input
   button.addEventListener('click', () => {
+    // Stores the id value of post to comment form
     const form = document.querySelector('#commentForm');
     form.id.value = "";
     form.id.value = postData.id;
 
-    console.log(postData);
     return SinglePostTemplate(postData);
   });
 
@@ -203,7 +241,6 @@ export function renderAuthorToTemplate(postData, parent) {
 }
 
 export function renderConditionalInteraction(profile, postData, parent) {
-
   const { author } = postData;
   const { name } = author;
  

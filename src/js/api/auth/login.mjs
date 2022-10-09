@@ -4,6 +4,11 @@ import * as storage from "../../handlers/storage/index.mjs";
 const action = '/auth/login';
 const method = 'POST';
 
+/**
+ * Login fetch function
+ * @param {{email: string, password: string}} profile Profile value passed in from loginform.
+ */
+
 export async function login(profile) {
   const loginURL = API_SOCIAL_URL + action;
   const body = JSON.stringify(profile);

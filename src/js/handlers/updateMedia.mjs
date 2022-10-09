@@ -2,6 +2,9 @@ import { updateMedia } from '../api/profile/index.mjs';
 
 const form = document.querySelector('#updateMediaForm');
 
+/**
+ * Handler for Updating media form listener
+ */
 export function setUpdateMediaFormListener() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();

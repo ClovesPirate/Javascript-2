@@ -9,6 +9,11 @@ export function headers() {
   }
 };
 
+/**
+ * Fetch function with authorization using the accessToken
+ * @param {string} url API endpoint
+ * @param {{ ...options: object, headers: headers() }} options 
+ */
 export async function authFetch(url, options = {}) {
   const response = await fetch(url, {
     ...options,

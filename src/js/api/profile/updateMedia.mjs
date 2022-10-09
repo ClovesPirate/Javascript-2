@@ -6,6 +6,13 @@ const action = '/profiles/';
 const type = '/media'
 const method = 'PUT';
 
+/**
+ * 
+ * @param {{ banner: URL, avatar: URL  }} postData 
+ * @returns Updates {avatar} and {banner} object key values to the server.
+ * @promise 
+ */
+
 export async function updateMedia(postData) {
   const { name } = load('profile');
   
