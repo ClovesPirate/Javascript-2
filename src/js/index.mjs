@@ -1,6 +1,5 @@
 import * as handler from '../js/handlers/index.mjs';
-import { authFetch } from './api/authFetch.mjs';
-import { getProfile } from './api/profile/read.mjs';
+import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const path = location.pathname;
 
