@@ -12,7 +12,6 @@ export function setRegisterFormListener() {
     const form = e.target;
     const formData = new FormData(form);
     const profile = Object.fromEntries(formData.entries());
-    console.log(profile);
 
     // === Need some help with setting up logic for setting values for banner and avatar, as I cant pass in an empty string.
     // Returns 400 bad request.

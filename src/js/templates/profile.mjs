@@ -58,6 +58,13 @@ export function profileTemplate(postData) {
   editProfileButton.innerHTML = 'Edit';
   postHeader.innerHTML = 'My Posts';
 
+  editProfileButton.setAttribute('data-bs-toggle', 'modal');
+  editProfileButton.setAttribute('data-bs-target', '#updateMedia');
+  editProfileButton.setAttribute('type', 'button');
+  editProfileButton.addEventListener('click', () => {
+      renderUpdateMedia(postData);
+    });
+
   posts.forEach(post => {
     const postContainer = document.createElement('article');
     const postTitle = document.createElement('p');
@@ -99,12 +106,7 @@ export function profileTemplate(postData) {
     editButton.setAttribute('data-bs-target', '#updatePost');
     editButton.innerHTML = `<i class="fa fa-pencil me-3" aria-hidden="true"></i>Edit
     `;
-
-    editProfileButton.setAttribute('data-bs-toggle', 'modal');
-    editProfileButton.setAttribute('data-bs-target', '#updateMedia');
-    editProfileButton.setAttribute('type', 'button');
-    editProfileButton.addEventListener('click', () => renderUpdateMedia(postData));
-
+    
     postContainer.append(dropdown, contentContainer);
     postsContainer.append(postContainer);
   }) 

@@ -19,8 +19,10 @@ export async function authFetch(url, options = {}) {
     ...options,
     headers: headers(),
   })
+  
   if (response.ok) {
     return await response.json();
-  }
+  } else {
   throw new Error(`${response.status} ${response.statusText}`);
+  }
 }
