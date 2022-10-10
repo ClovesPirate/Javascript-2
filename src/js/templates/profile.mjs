@@ -12,9 +12,9 @@ export function profileTemplate(postData) {
   const editProfileButton = document.createElement('button');
   const detailsContainer = document.createElement('div');
   const titleContainer = document.createElement('div');
-  const ProfileFollowersCount = document.createElement('p');
-  const profileFollowingCount = document.createElement('p');
-  const profilePostsCount = document.createElement('p');
+  const ProfileFollowersCount = document.createElement('small');
+  const profileFollowingCount = document.createElement('small');
+  const profilePostsCount = document.createElement('small');
   const postsContainer = document.createElement('div');
   const postHeader = document.createElement('p');
   const imageContainer = document.createElement('div');
@@ -38,7 +38,7 @@ export function profileTemplate(postData) {
     profilePicture.src = avatar;
   }
 
-  headerContainer.classList.add('d-flex', 'pt-3');
+  headerContainer.classList.add('d-flex');
   detailsContainer.classList.add('d-flex');
   profileBanner.classList.add('img-fluid', 'banner', 'd-block', 'mx-auto');
   profilePicture.classList.add('avatar-sm');
@@ -48,7 +48,7 @@ export function profileTemplate(postData) {
   profileFollowingCount.classList.add('bg-info', 'p-1', 'rounded', 'me-1');
   ProfileFollowersCount.classList.add('bg-info', 'p-1', 'rounded', 'me-1');
   profilePostsCount.classList.add('bg-info', 'p-1', 'rounded');
-  postsContainer.classList.add('align-items-center', 'm-0', 'row', 'myPosts');
+  postsContainer.classList.add('m-0', 'mt-1', 'row', 'myPosts');
   postHeader.classList.add('mt-5', 'm-0');
 
   profileFollowingCount.innerHTML = `Friends: ${_count.following}`;
@@ -68,46 +68,38 @@ export function profileTemplate(postData) {
   posts.forEach(post => {
     const postContainer = document.createElement('article');
     const postTitle = document.createElement('p');
-    const postBody = document.createElement('p');
+    const postBody = document.createElement('small');
     const contentContainer = document.createElement('div');
-    const dropdown = document.createElement('div');
-    const dropdownMenu = document.createElement('ul');
-    const deleteButton = document.createElement('li');
-    const editButton = document.createElement('li');
-    const dropdownButton = document.createElement('button');
+    const deleteButton = document.createElement('button');
+    const editButton = document.createElement('button');
+    const buttonContainer = document.createElement('div');
     
     contentContainer.append(postTitle, postBody);
-    dropdownMenu.append(deleteButton, editButton);
-    dropdownMenu.classList.add('dropdown-menu', 'dropdown-menu-dark');
-    dropdown.append(dropdownButton, dropdownMenu);
 
     deleteButton.addEventListener('click', () => removePost(post.id));
     editButton.addEventListener('click', () => renderUpdatePost(post));
 
     postTitle.innerHTML = post.title.slice(0, 18).concat('...');
     postBody.innerHTML = post.body.slice(0, 30).concat('...');
+
+    buttonContainer.classList.add('me-2')
     
-    postContainer.classList.add('bg-info', 'p-2', 'my-1', 'col-6-sm', 'd-flex', 'align-items-center');
+    postContainer.classList.add('bg-info', 'p-2', 'my-1', 'col-6-sm', 'd-flex', 'align-items-center', 'inline-block', 'h-25');
     postBody.classList.add('fs-6', 'text-muted', 'm-0')
     postTitle.classList.add('m-0');
-    dropdown.classList.add('dropdown', 'me-3', 'bg-dark');
-    
-    dropdownButton.setAttribute('type', 'button');
-    dropdownButton.setAttribute('data-bs-toggle', 'dropdown');
-    dropdownButton.classList.add('dropdown-toggle', 'btn-primary', 'btn');
 
-    deleteButton.classList.add('dropdown-item');
+    deleteButton.classList.add('btn', 'btn-danger');
     deleteButton.setAttribute('type', 'submit');
-    deleteButton.set
-    deleteButton.innerHTML = `<i class="fa-solid me-3 fa-trash"></i>Delete`;
+    deleteButton.innerHTML = `<i class="fa-solid fa-trash"></i>`;
 
-    editButton.classList.add('dropdown-item');
+    editButton.classList.add('btn', 'btn-primary');
     editButton.setAttribute('data-bs-toggle', 'modal');
     editButton.setAttribute('data-bs-target', '#updatePost');
-    editButton.innerHTML = `<i class="fa fa-pencil me-3" aria-hidden="true"></i>Edit
+    editButton.innerHTML = `<i class="fa fa-pencil" aria-hidden="true"></i>
     `;
     
-    postContainer.append(dropdown, contentContainer);
+    buttonContainer.append(deleteButton, editButton)
+    postContainer.append(buttonContainer, contentContainer);
     postsContainer.append(postContainer);
   }) 
 

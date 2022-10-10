@@ -6,7 +6,7 @@ const method = 'POST';
 
 /**
  * Login fetch function
- * @param {{email: string, password: string}} profile Profile value passed in from loginform.
+ * @param {{email: string, password: string}} profile Profile values passed in from loginform.
  */
 
 export async function login(profile) {
@@ -27,7 +27,6 @@ export async function login(profile) {
   if(response.ok) {
     storage.save('token', accessToken);
     storage.save('profile', profile);
-    alert('You have been successfully logged in');
     location.href = '/feed/';
   } else {
     throw new Error;

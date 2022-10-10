@@ -3,9 +3,11 @@ import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const path = location.pathname;
 
-if (path === '/profile/login/') {
+console.log(path);
+
+if (path === '/index.html' || path === '/') {
   handler.setloginFormListener();
-} else if (path === '/profile/register/') {
+} else if (path === '/register/') {
   handler.setRegisterFormListener();
 } else if (path === '/feed/') {
   handler.setGetPosts();
