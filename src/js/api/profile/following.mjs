@@ -19,6 +19,7 @@ export async function stopFollowing(name) {
     body: JSON.stringify(""),
   });
 
+  alert(`You are no longer following ${name}`);
   return result
 }
 
@@ -37,5 +38,6 @@ export async function startFollowing(name) {
     body: JSON.stringify(""),
   });
 
+  alert(`You've added ${name} to your friends list`);
   return result;
 }

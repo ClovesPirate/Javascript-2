@@ -18,5 +18,7 @@ if (path === '/index.html' || path === '/') {
   handler.setLogoutEventListener();
   handler.setCreateCommentListener();
   handler.setGetProfile();
+  handler.setGetUsers();
   handler.setUpdateMediaFormListener();
+  handler.setSearchUsersFormListener();
 }

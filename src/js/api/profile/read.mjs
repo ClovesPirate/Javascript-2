@@ -15,7 +15,7 @@ export async function getProfile() {
   const getProfileURL = `${API_SOCIAL_URL}${action}${name}${details}`;
 
   const result = await authFetch(getProfileURL);
-  console.log(result);
+  console.log(result.following);
 
   return result;
 }

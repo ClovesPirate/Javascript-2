@@ -10830,10 +10830,10 @@ main {
   border-radius: 0;
 }
 
-.myPosts {
+.myPosts, .users, .friends {
   min-height: fit-content;
-  max-height: 15em;
-  overflow-y: scroll;
+  max-height: 13.5em;
+  overflow: scroll;
   scrollbar-width: none;
   scroll-snap-type: mandatory;
 }
@@ -10849,6 +10849,24 @@ main {
 
 .width {
   width: clamp(5em, 10vw, 3em);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.user:hover {
+  cursor: pointer;
+}
+
+.user:hover .hidden {
+  opacity: 1;
+}
+
+@media (min-width: 1000px) {
+  .height {
+    max-height: 45em;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

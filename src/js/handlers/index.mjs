@@ -9,3 +9,5 @@ export * from './updatePost.mjs';
 export * from './commentOnPost.mjs';
 export * from './getProfile.mjs';
 export * from './updateMedia.mjs';
+export * from './getUsers.mjs';
+export * from './searchUsers.mjs';
