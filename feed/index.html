@@ -13,9 +13,9 @@
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid p-0 align-items-center">
+      <div class="container-fluid p-0 px-2 align-items-center">
         <div>
-          <a href="#"><i class="text-light bg-primary p-2 fa-solid fa-signature"></i><span class="ms-2 text-light">CodeHub</span></a>
+          <div><i class="text-light bg-primary p-2 fa-solid fa-signature"></i><span class="ms-2 text-light">CodeHub</span></div>
         </div>
         <a id="logout" class="btn btn-primary btn-sm" href="../">Logout</a>
       </div>
@@ -99,13 +99,13 @@
 
     <!-- Update Post Modal -->
     <div class="modal text-dark" tabindex="-1" id="updatePost">
-      <div class="modal-dialog modal-dark">
+      <div class="modal-dialog bg-dark">
         <div class="modal-content">
           <div class="modal-header">
             <p class="modal-title">Update Post</p>
             <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body bg-dark text-light">
             <form class="col-sm" id="updatePostForm">
 
               <div class="mb-3 col-4">
@@ -131,7 +131,9 @@
                   <input class="form-control" type="url" name="media" title="Must be a direct image url">
                 </div>
               </div>
+              <div class="d-grid">
               <button type="submit" class="btn btn-primary">Update Post</button>
+              </div>
             </form>
           </div>
         </div>
