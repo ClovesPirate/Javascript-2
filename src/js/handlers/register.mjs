@@ -21,8 +21,6 @@ export function setRegisterFormListener() {
       delete profile.banner;
     }
 
-    console.log(profile);
-
     register(profile);
   });
 }
