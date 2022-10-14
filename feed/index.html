@@ -10,9 +10,9 @@
   <title>CodeHub | Feed</title>
 </head>
 <body class="bg-dark">
-  <header>
+  <header class="container-fluid" >
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid p-0 px-2 align-items-center">
+      <div class="container-fluid p-0 align-items-center">
         <div>
           <div><i class="text-light bg-primary p-2 fa-solid fa-signature"></i><span class="ms-2 text-light">CodeHub</span></div>
         </div>
@@ -22,7 +22,7 @@
   </header>
 
   <main class="text-light">
-    <div class="container-fluid g-0 row border-bottom border-top pb-4 mx-auto height">
+    <div class="container-fluid border-bottom height">
       <!-- Banner, create post form, profile and profiles -->
       <div class="pb-2" id="bannerContainer">
         <div class="d-flex align-items-center">
@@ -32,98 +32,101 @@
       </div>
 
       <!-- Profile goes here -->
-      <div class="col-lg-6 border-end px-3 mt-3 profile" id="profileContainer">
-        <!-- Modal and form for update media -->
-        <div class="modal text-dark" tabindex="-1" id="updateMedia">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <!-- Modal Header -->
-              <div class="modal-header">
-                <p class="modal-title">Update Profile Media</p>
-                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="row border-bottom pb-3">
+        <div class="col-lg-6 border-end px-3 mt-3 profile" id="profileContainer">
+          <!-- Modal and form for update media -->
+          <div class="modal text-dark" tabindex="-1" id="updateMedia">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <p class="modal-title">Update Profile Media</p>
+                  <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                  <!-- Modal Body -->
+                <div class="modal-body bg-dark text-light">
+                  <form class="col-sm" id="updateMediaForm">
+              
+                    <div class="mb-3">
+                      <label class="form-label" for="banner">Change your banner here</label>
+                      <input type="url" class="form-control" name="banner" title="Must be a valid URL">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="avatar">Change your avatar</label>
+                      <input type="url" class="form-control" name="avatar" title="Must be a valid URL">
+                    </div>
+                    <div class="d-grid">
+                      <button type="submit" class="btn btn-light">Update Media</button>
+                    </div>
+                  </form>
+                </div>
+  
               </div>
-                <!-- Modal Body -->
-              <div class="modal-body bg-dark text-light">
-                <form class="col-sm" id="updateMediaForm">
+            </div>
+          </div>
+        </div>
+  
+          <!-- Create post / Profiles navigation -->
+        <div class="col-lg-6 px-3 mt-3">
+          <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-createPost-tab" data-bs-toggle="tab" data-bs-target="#nav-createPost" type="button" role="tab" aria-controls="nav-createPost" aria-selected="true">Create Post</button>
+            <button class="nav-link" id="nav-profiles-tab" data-bs-toggle="tab" data-bs-target="#nav-profiles" type="button" role="tab" aria-controls="nav-profiles" aria-selected="true">Profiles</button>
+          </nav>
+          <!-- Create Post and profiles content -->
+          <div class="tab-content" id="nav-tabContent">
+            <!-- Create Post -->
+            <div tabindex="0" class="tab-pane fade show active" id="nav-createPost" role="tabpanel">
+              <form id="createPostForm">
+     
+                <div class="my-3 col-5 pt-2">
+                  <input class="form-control" placeholder="Title" type="text" name="title" required title="Please provide a title">
+                </div>
+          
+                <div class="mb-3">
+                  <textarea placeholder="Whats on your mind?" class="form-control" type="textarea" name="body" required title="Please provide a body" rows="6"></textarea>
+                </div>
+                
+                <div class="row pt-2">
+                  <div class="mb-3 col">
+                    <label class="form-label" for="tags">Tags</label>
+                    <input class="form-control" type="text" name="tags" title="Label your post with tags">
+                  </div>
             
-                  <div class="mb-3">
-                    <label class="form-label" for="banner">Change your banner here</label>
-                    <input type="url" class="form-control" name="banner" title="Must be a valid URL">
+                  <div class="mb-3 col">
+                    <label class="form-label" for="media">Image</label>
+                    <input class="form-control" type="url" name="media" title="Must be a direct image url">
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label" for="avatar">Change your avatar</label>
-                    <input type="url" class="form-control" name="avatar" title="Must be a valid URL">
+                </div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Publish</button>
+                </div>
+              
+              </form>
+            </div>
+            <!-- Profiles -->
+            <div tabindex="0" class="tab-pane fade" id="nav-profiles" role="tabpanel" aria-labelledby="nav-profiles-tab">
+              <nav>
+                <div class="input-group input-group-sm mt-1">
+                  <input class="form-control" type="search" name="search" placeholder="Search Users" id="filterUsers">
+                </div>
+              </nav>
+              <div class="users px-3">
+                <div>
+                  <p class="sticky-top p-1 text-center text-dark bg-light w-25 mx-auto rounded-bottom">Users</p>
+                  <div id="usersContainer" class="row">
+  
                   </div>
-                  <div class="d-grid">
-                    <button type="submit" class="btn btn-light">Update Media</button>
-                  </div>
-                </form>
+                </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
 
-        <!-- Create post / Profiles navigation -->
-      <div class="col-lg-6 px-3 mt-3">
-        <nav class="nav nav-tabs" id="nav-tab" role="tablist">
-          <button class="nav-link active" id="nav-createPost-tab" data-bs-toggle="tab" data-bs-target="#nav-createPost" type="button" role="tab" aria-controls="nav-createPost" aria-selected="true">Create Post</button>
-          <button class="nav-link" id="nav-profiles-tab" data-bs-toggle="tab" data-bs-target="#nav-profiles" type="button" role="tab" aria-controls="nav-profiles" aria-selected="true">Profiles</button>
-        </nav>
-        <!-- Create Post and profiles content -->
-        <div class="tab-content" id="nav-tabContent">
-          <!-- Create Post -->
-          <div tabindex="0" class="tab-pane fade show active" id="nav-createPost" role="tabpanel">
-            <form id="createPostForm">
-   
-              <div class="my-3 col-5 pt-2">
-                <input class="form-control" placeholder="Title" type="text" name="title" required title="Please provide a title">
-              </div>
-        
-              <div class="mb-3">
-                <textarea placeholder="Whats on your mind?" class="form-control" type="textarea" name="body" required title="Please provide a body" rows="6"></textarea>
-              </div>
-              
-              <div class="row pt-2">
-                <div class="mb-3 col">
-                  <label class="form-label" for="tags">Tags</label>
-                  <input class="form-control" type="text" name="tags" title="Label your post with tags">
-                </div>
-          
-                <div class="mb-3 col">
-                  <label class="form-label" for="media">Image</label>
-                  <input class="form-control" type="url" name="media" title="Must be a direct image url">
-                </div>
-              </div>
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Publish</button>
-              </div>
-            
-            </form>
-          </div>
-          <!-- Profiles -->
-          <div tabindex="0" class="tab-pane fade" id="nav-profiles" role="tabpanel" aria-labelledby="nav-profiles-tab">
-            <div>
-              <p class="p-1 text-center text-dark bg-light w-25 mx-auto rounded-bottom">My friends</p>
-              <div id="friendsContainer" class="friends d-flex">
-              
-              </div>
-            </div>
-            <nav>
-              <div class="input-group input-group-sm">
-                <input class="form-control" type="search" name="search" placeholder="Search Users" id="filterUsers">
-              </div>
-            </nav>
-            <div class="users px-3">
-              <div>
-                <p class="sticky-top p-1 text-center text-dark bg-light w-25 mx-auto rounded-bottom">Other Users</p>
-                <div id="usersContainer" class="row">
-
-                </div>
-              </div>
-            </div>
-          </div>
+      <div>
+        <p class="p-1 text-center text-dark bg-light w-25 mx-auto">My friends</p>
+        <div id="friendsContainer" class="friends d-flex px-md-3 mt-md-5">
+          <!-- Friendlist goes here -->
         </div>
       </div>
     </div>

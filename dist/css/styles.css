@@ -10800,10 +10800,14 @@ main {
   cursor: pointer;
 }
 
-.avatar {
+.avatar-post, .avatar {
   width: 2em;
   border-radius: 100vw;
   aspect-ratio: 1;
+}
+
+.avatar {
+  width: 3em;
 }
 
 .avatar-sm {
@@ -10838,6 +10842,10 @@ main {
   scroll-snap-type: mandatory;
 }
 
+.users {
+  max-height: 22.5em;
+}
+
 .loadingContainer {
   min-height: 50em;
 }
@@ -10861,12 +10869,6 @@ main {
 
 .user:hover .hidden {
   opacity: 1;
-}
-
-@media (min-width: 1000px) {
-  .height {
-    max-height: 45em;
-  }
 }
 
 /*# sourceMappingURL=styles.css.map */

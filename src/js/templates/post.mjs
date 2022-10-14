@@ -215,7 +215,7 @@ export function renderAuthorToTemplate(postData, parent) {
 
   authorContainer.classList.add('author', 'd-flex', 'align-self-center')
   postAuthor.classList.add( 'ms-2', 'text-break', 'fs-6', 'align-items-center', 'd-flex');
-  avatar.classList.add( 'avatar');
+  avatar.classList.add( 'avatar-post');
   postCreated.classList.add('d-flex', 'align-items-center', 'ms-2');
   postTime.classList.add('text-muted', 'fs-6', 'ms-1');
   postDate.classList.add('text-muted', 'fs-6')

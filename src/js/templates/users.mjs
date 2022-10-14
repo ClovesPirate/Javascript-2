@@ -35,7 +35,7 @@ export function friendTemplate(postData) {
   const picture = document.createElement('img');
   const message = document.createElement('strong');
 
-  user.classList.add('col-sm-3', 'user', 'position-relative', 'col-6')
+  user.classList.add('user', 'position-relative', 'col-sm-1', 'col-3')
   picture.classList.add('img-fluid', 'd-block', 'mx-auto', 'avatar');
   userName.classList.add('text-center', 'mx-auto', 'text-break');
   message.classList.add('hidden', 'position-absolute', 'top-50', 'start-50', 'translate-middle', 'text-dark', 'bg-light', 'px-2', 'py-1', 'rounded');
