@@ -13,6 +13,14 @@ export function setUpdatePostFormListener() {
     const formData = new FormData(form);
     const post = Object.fromEntries(formData.entries());
 
+    if (!post.tags) {
+      delete post.tags;
+    }
+
+    if (!post.media) {
+      delete post.media;
+    }
+
     updatePost(post);
     alert('Post has been successfuly updated');
     location.reload;

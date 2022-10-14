@@ -172,7 +172,7 @@
     </div>
 
     <!-- Feed section -->
-    <section class="container-fluid mt-3 px-sm-3">
+    <section class="container-fluid mt-3 px-sm-3 max-width">
       <div class="mb-3 d-flex align-self-center">
         <h2 class="me-2">Browse</h2>
         <!-- SEARCH -->
@@ -191,8 +191,8 @@
       </div>
 
       <!-- PostContainer -->
-      <div  class="container-fluid">
-        <div id="feedContainer" class="row justify-content-center">
+      <div>
+        <div id="feedContainer"> 
           <!-- POSTS goes here -->
 
         </div>
@@ -203,20 +203,16 @@
       <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
 
-          <!-- <div class="modal-header bg-dark text-dark">
-            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div> -->
-
           <div class="modal-body bg-info">
             <div id="postBody">
               <!-- Single Post content goes here -->
             </div>
             <div>
               <div class="row">
-                <form id="commentForm">
-                  <textarea class="form-control bg-dark text-light" type="textarea" rows="4" name="body" required></textarea>
+                <form id="commentForm" class="d-flex">
+                  <input class="form-control bg-dark text-light" type="textarea" placeholder="Comment..." name="body" required>
                   <input type="hidden" name="id">
-                  <div class="d-grid mt-2">
+                  <div>
                     <button type="submit" class="btn btn-primary">Comment</button>
                   </div>
                 </form>

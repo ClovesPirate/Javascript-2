@@ -36,7 +36,7 @@ main {
 }
 
 .avatar {
-  width: 4em;
+  width: 2em;
   border-radius: 100vw;
   aspect-ratio: 1;
 }
@@ -86,8 +86,6 @@ main {
 .width {
   width: clamp(5em, 10vw, 3em);
 }
-
-
 
 .hidden {
   opacity: 0;

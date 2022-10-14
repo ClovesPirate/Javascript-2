@@ -24,7 +24,7 @@ export async function register(profile) {
   const response = await fetch(registerURL, options);
   const result = await response.json();
   alert(`Welcome ${profile.name}. Log in to use your account`)
-  location.href = "/index.html";
+  // location.href = "/index.html";
   return result;
 
   }
