@@ -1,5 +1,6 @@
 import * as handler from '../js/handlers/index.mjs';
-import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+// import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 const path = location.pathname;
 
