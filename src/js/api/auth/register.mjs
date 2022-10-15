@@ -1,4 +1,6 @@
+import { createToast } from "../../ux/message.mjs";
 import { API_SOCIAL_URL } from "../constants.mjs"
+import { login } from "./login.mjs";
 
 const action = '/auth/register';
 const method = 'POST';
@@ -23,12 +25,24 @@ export async function register(profile) {
   try {
   const response = await fetch(registerURL, options);
   const result = await response.json();
-  alert(`Welcome ${profile.name}. Log in to use your account`)
-  location.href = "/index.html";
-  return result;
-
+  
+  switch(response.status) {
+    case 201: 
+      login(profile);
+      return result;
+    case 400:
+      createToast('Account already exists in database.');
+      break;
+    case 500:
+      createToast('Email already registered in database.');
+      break;
+    default:
+      throw new Error;
+    }
   }
+
  catch(error) {
+    createToast('Unknown error occured.');
     console.log(error);
   }
 }

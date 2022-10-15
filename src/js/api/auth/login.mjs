@@ -1,5 +1,6 @@
 import { API_SOCIAL_URL } from "../constants.mjs"
 import * as storage from "../../handlers/storage/index.mjs";
+import { createToast } from "../../ux/message.mjs";
 
 const action = '/auth/login';
 const method = 'POST';
@@ -24,16 +25,21 @@ export async function login(profile) {
   const response = await fetch(loginURL, options);
   const { accessToken, ...profile } = await response.json();
 
-  if(response.ok) {
-    storage.save('token', accessToken);
-    storage.save('profile', profile);
-    location.href = '/feed/';
-  } else {
-    throw new Error;
+  switch(response.status) {
+    case 200:
+      storage.save('token', accessToken);
+      storage.save('profile', profile);
+      location.replace('/feed/');
+      break;
+    case 401:
+      createToast('Invalid email and/or password');
+      break;
+    default: 
+      throw new Error;
   }
 
   } catch(error) {
-    alert('An error occured attempting to log in');
-    console.log(error);
+      createToast('An unknown error occured, try again later')
+      console.log(error);
   }
 }
