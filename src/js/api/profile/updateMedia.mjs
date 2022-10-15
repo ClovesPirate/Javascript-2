@@ -1,4 +1,5 @@
 import { load } from "../../handlers/storage/index.mjs";
+import { createToast } from "../../ux/message.mjs";
 import { authFetch } from "../authFetch.mjs";
 import { API_SOCIAL_URL } from "../constants.mjs";
 
@@ -22,10 +23,19 @@ export async function updateMedia(postData) {
 
   const updateMediaURL = `${API_SOCIAL_URL}${action}${name}${type}`;
 
-  const result = await authFetch(updateMediaURL, {
+  const response = await authFetch(updateMediaURL, {
     method,
     body: JSON.stringify(postData),
   })
 
-  return result;
+  if (response.ok) {
+    const result = await response.json();
+    createToast('Profile media updated.');
+    window.setTimeout(function () {
+      location.reload();
+    }, 1500);
+    return result;
+  } else {
+    return createToast('An error occured');
+  }
 }

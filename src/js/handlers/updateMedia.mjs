@@ -22,7 +22,5 @@ export function setUpdateMediaFormListener() {
     }
 
     updateMedia(media);
-    alert('Media has been successfuly updated');
-    location.reload();
   });
 }

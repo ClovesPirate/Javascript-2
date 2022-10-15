@@ -15,14 +15,12 @@ export function headers() {
  * @param {{ ...options: object, headers: headers() }} options 
  */
 export async function authFetch(url, options = {}) {
-  const response = await fetch(url, {
-    ...options,
-    headers: headers(),
-  })
-  
-  if (response.ok) {
-    return await response.json();
-  } else {
-  throw new Error(`${response.status} ${response.statusText}`);
+  try {
+    return fetch(url, {
+      ...options,
+      headers: headers(),
+    })
+  } catch(err) {
+    console.log(err);
   }
 }

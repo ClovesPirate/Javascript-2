@@ -9,15 +9,16 @@ const filterAsc = '_sort=title&sortOrder=asc';
 export async function getFilteredPostsAscending() {
   const getPostsURL = `${API_SOCIAL_URL}${action}${details}${filterAsc}`;
 
-  const result = await authFetch(getPostsURL);
-
+  const response = await authFetch(getPostsURL);
+  const result = await response.json();
   return result;
 }
 
 export async function getFilteredPostsDescending() {
   const getPostsURL = `${API_SOCIAL_URL}${action}${details}${filterDesc}`;
 
-  const result = await authFetch(getPostsURL);
+  const response = await authFetch(getPostsURL);
+  const result = await response.json();
 
   return result;
 }

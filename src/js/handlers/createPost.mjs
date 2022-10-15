@@ -25,8 +25,6 @@ export function setCreatePostFormListener() {
       }
   
       createPost(post);
-      alert('Post created successfully');
-      location.reload();
     }
   });
 }

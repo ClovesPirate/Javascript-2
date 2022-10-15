@@ -1,3 +1,4 @@
+import { createToast } from "../../ux/message.mjs";
 import { authFetch } from "../authFetch.mjs";
 import { API_SOCIAL_URL } from "../constants.mjs";
 
@@ -14,13 +15,22 @@ export async function stopFollowing(name) {
   const unfollow = '/unfollow';
 
   const unFollowProfileURL = `${API_SOCIAL_URL}${action}${name}${unfollow}`;
-  const result = await authFetch(unFollowProfileURL, {
+  const response = await authFetch(unFollowProfileURL, {
     method,
     body: JSON.stringify(""),
   });
 
-  alert(`You are no longer following ${name}`);
+ if (response.ok) {
+  const result = await response.json();
+  createToast(`You are no longer following ${name}`);
+  window.setTimeout(function () {
+    location.reload();
+  }, 1500);
   return result
+ } else {
+  createToast('An error occured');
+  throw new Error;
+ }
 }
 
 /**
@@ -33,11 +43,20 @@ export async function startFollowing(name) {
 
   const followProfileURL = `${API_SOCIAL_URL}${action}${name}${follow}`;
 
-  const result = await authFetch(followProfileURL, {
+  const response = await authFetch(followProfileURL, {
     method,
     body: JSON.stringify(""),
   });
 
-  alert(`You've added ${name} to your friends list`);
-  return result;
+  if (response.ok) {
+    const result = await response.json();
+    createToast(`You've added ${name} to your friends list`);
+    window.setTimeout(function () {
+      location.reload();
+    }, 1500);
+    return result;
+  } else {
+    createToast('An error occured');
+    throw new Error;
+  }
 }

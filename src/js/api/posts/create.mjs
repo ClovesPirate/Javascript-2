@@ -1,3 +1,4 @@
+import { createToast } from "../../ux/message.mjs";
 import { authFetch } from "../authFetch.mjs";
 import { API_SOCIAL_URL } from "../constants.mjs";
 
@@ -29,6 +30,16 @@ export async function createPost(postData) {
     body: JSON.stringify(postData),
   }
 
-  const result = await authFetch(createPostURL, headers);
-  return result;
+  const response = await authFetch(createPostURL, headers);
+  if (response.ok) {
+    const post = await response.json();
+    createToast('Post created successfully');
+    window.setTimeout(function () {
+      location.reload();
+    }, 1500);
+    return post;
+  } else {
+    createToast('An error occured');
+    throw new Error;
+  }
 }

@@ -13,7 +13,5 @@ export async function setCreateCommentListener() {
     const comment = Object.fromEntries(formData.entries());
 
     commentOnPost(comment);
-    alert('Comment created successfully');
-    location.reload();
   });
 }

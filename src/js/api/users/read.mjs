@@ -5,7 +5,7 @@ const action = '/profiles/';
 
 export async function getUsers() {
   const getUsersURL = `${API_SOCIAL_URL}${action}`;
-  const result = await authFetch(getUsersURL);
-
-  return result;
+  const response = await authFetch(getUsersURL);
+  const users = await response.json();
+  return users;
 }

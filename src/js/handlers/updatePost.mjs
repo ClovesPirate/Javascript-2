@@ -22,7 +22,5 @@ export function setUpdatePostFormListener() {
     }
 
     updatePost(post);
-    alert('Post has been successfuly updated');
-    location.reload;
   });
 }

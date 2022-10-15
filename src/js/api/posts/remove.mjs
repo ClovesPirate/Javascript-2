@@ -1,3 +1,4 @@
+import { createToast } from "../../ux/message.mjs";
 import { authFetch } from "../authFetch.mjs";
 import { API_SOCIAL_URL } from "../constants.mjs";
 
@@ -28,9 +29,19 @@ export async function removePost(id) {
   }
 
   const deletePostURL = `${API_SOCIAL_URL}${action}${id}`;
-  const result = await authFetch(deletePostURL, {
+  const response = await authFetch(deletePostURL, {
     method,
-  })
+  });
 
-  return result;
+  if (response.ok) {
+    const result = response.json();
+    createToast('Post was deleted.');
+    window.setTimeout(function () {
+      location.reload();
+    }, 1500);
+    return result;
+  } else {
+    createToast('An error occured');
+    throw new Error;
+  }
 }

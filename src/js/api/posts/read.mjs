@@ -6,14 +6,16 @@ const details = '?_author=true&_comments=true&_reactions=true'
 
 export async function getPosts() {
   const getPostsURL = `${API_SOCIAL_URL}${action}${details}`;
-  const result = await authFetch(getPostsURL);
+  const response = await authFetch(getPostsURL);
+  const posts = await response.json();
 
-  return result;
+  return posts;
 }
 
 export async function getPost(id) {
   const getPostURL = `${API_SOCIAL_URL}${action}${id}${details}`
-  const result = await authFetch(getPostURL);
+  const response = await authFetch(getPostURL);
+  const post = await response.json()
 
-  return result;
+  return post;
 }

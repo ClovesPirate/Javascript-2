@@ -1,3 +1,4 @@
+import { createToast } from "../../ux/message.mjs";
 import { authFetch } from "../authFetch.mjs";
 import { API_SOCIAL_URL } from "../constants.mjs";
 
@@ -20,9 +21,20 @@ export async function commentOnPost(postData) {
  
   const updatePostURL = `${API_SOCIAL_URL}${action}${id}${commentAction}`;
 
-  const result = await authFetch(updatePostURL, {
+  const response = await authFetch(updatePostURL, {
     method,
     body: JSON.stringify(postData),
   })
-  return result;
+
+  if (response.ok) {
+    const comment = await response.json();
+    createToast('Comment created successfully');
+    window.setTimeout(function () {
+      location.reload();
+    }, 1500);
+    return comment;
+  } else {
+    createToast('An error occured');
+    throw new Error;
+  }
 }
