@@ -26,13 +26,13 @@ export function profileTemplate(postData) {
   const bannerContainer = document.querySelector('#bannerContainer');
   bannerContainer.innerHTML = "";
 
-  if (banner === "") {
+  if (!banner) {
     profileBanner.src = "../../../media/images/banner-100.jpg";
   } else {
     profileBanner.src = banner;
   }
 
-  if (avatar === "") {
+  if (!avatar) {
     profilePicture.src = "../../../media/images/stock-avatar.jpg";
   } else {
     profilePicture.src = avatar;
