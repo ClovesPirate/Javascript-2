@@ -2021,7 +2021,7 @@ progress {
   height: 1.5em;
 }
 .form-control::placeholder {
-  color: #6c757d;
+  color: rgb(234, 237, 244);
   opacity: 1;
 }
 .form-control:disabled {
