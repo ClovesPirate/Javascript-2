@@ -8,6 +8,6 @@ export function setLogoutEventListener() {
   logoutButton.addEventListener('click', (e) => {
     remove('token');
     remove('profile');
-    return location.href = '/';
+    location.replace('/');
   });
 }

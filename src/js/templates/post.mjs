@@ -278,8 +278,8 @@ export function renderCommentsToPost(postData) {
     const creator = document.createElement('small');
     const container = document.createElement('div');
     container.classList.add('mt-3', 'p-2', 'p-3', 'bg-dark', 'd-sm-flex')
-    creator.classList.add('fs-5');
-    content.classList.add('fs-6', 'd-block', 'text-muted', 'px-sm-3', 'align-middle');
+    creator.classList.add('fs-6');
+    content.classList.add('fs-6', 'd-block', 'text-muted', 'px-sm-3', 'align-baseline');
 
     content.innerHTML = `${body}`;
     creator.innerHTML = owner;

@@ -39,7 +39,6 @@ export async function createPost(postData) {
     }, 1500);
     return post;
   } else {
-    createToast('An error occured');
-    throw new Error;
+     return createToast('An error occured');
   }
 }

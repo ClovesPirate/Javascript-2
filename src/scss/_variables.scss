@@ -1,8 +1,22 @@
 // Colours
 $dark: #1f2833;
-// $primary: #7A417A;
 $primary: #37567b;
 $secondary: #c5d0d1;
-$light: rgb(251, 251, 251);
+$light: rgb(234, 237, 244);
 $info: #28323d;
+$input: #00000024;
 $danger: rgb(106, 95, 95);
+
+// Tooltip
+$tooltip-bg: $light;
+$tooltip-color: $dark;
+
+// Nav
+$nav-pills-link-active-color: $dark;
+$nav-pills-link-active-bg: $light;
+$nav-link-color: $light;
+$nav-link-hover-color: rgba(255, 255, 255, 0.585);
+
+
+
+

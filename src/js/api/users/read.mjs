@@ -7,5 +7,6 @@ export async function getUsers() {
   const getUsersURL = `${API_SOCIAL_URL}${action}`;
   const response = await authFetch(getUsersURL);
   const users = await response.json();
+  console.log(users);
   return users;
 }

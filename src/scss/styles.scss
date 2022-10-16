@@ -11,31 +11,7 @@ main {
   min-height: 90vh;
 }
 
-.bg-image {
-  background-image: url(/media/images/bg-image.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.post-bg {
-  background-image: url(/media/images/bg-image.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.max-width {
-  max-width: 700px;
-}
-
-.post {
-  transition: transform 200ms ease-in-out;
-}
-
-.post:hover {
-  cursor: pointer;
-}
-
-
+// Avatars
 .avatar-post, .avatar {
   width: 2em;
   border-radius: 100vw;
@@ -51,66 +27,77 @@ main {
   aspect-ratio: 1;
 }
 
+// Logo
 .logo {
   max-width: 1.5em;
   aspect-ratio: 1;
 }
 
+
+// Form control and  buttons
 .form-control {
   border-radius: 0;
-  // border: 1px solid $light;
   border: none;
-}
-
-.customButton {
-  border-radius: 0;
-  margin: 0;
+  background-color: $input;
+  color: $light;
 }
 
 .btn {
   border-radius: 0;
 }
 
+
+// Posts and users
 .myPosts, .users, .friends {
   min-height: fit-content;
-  max-height: 13.5em;
+  max-height: 13.4em;
   overflow: scroll;
   scrollbar-width: none;
   scroll-snap-type: mandatory;
 }
 
 .users {
-  max-height: 22.5em;
+  max-height: 22.1em;
 }
 
-.loadingContainer {
-  min-height: 50em;
+.user:hover {
+  cursor: pointer;
+  border-radius: 25vw;
+  transition: all 300ms ease-in-out;
 }
 
+// Banner
 .banner {
   width: 100vw;
   max-height: 15em;
+}
+
+// Toast
+.toast {
+  background-color: $light;
+}
+
+// Utils
+.max-width {
+  max-width: 700px;
+}
+
+.bg-image {
+  background-image: url(/media/images/bg-image.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .width {
   width: clamp(5em, 10vw, 3em);
 }
 
+.user:hover {
+  .hidden {
+    opacity: 1;
+  }
+}
+
 .hidden {
   opacity: 0;
 }
-
-.user:hover {
-  cursor: pointer;
-}
-
-
-.user:hover .hidden {
-  opacity: 1;
-}
-
-// @media (min-width: 1000px) {
-//   .height {
-//     max-height: 45em;
-//   }
-// }

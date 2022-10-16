@@ -1,3 +1,16 @@
+<!-- Search by number value for simple navigation between content. ----
+  1.0 Banner
+  1.1 Profile(single)
+  1.2 CreatePost and Profiles nav
+    1.2.1 CreatePost
+    1.2.2 Profiles
+  1.3 Update Post Modal
+  1.4 Feed Section
+  1.4.1 Search
+  1.4.2 Filter
+  1.4.3 PostsContainer
+  1.4.4 Singple Post Modal
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +21,10 @@
   <script src="../src/js/index.mjs" defer type="module"></script>
   <script src="https://kit.fontawesome.com/7bac96c235.js" crossorigin="anonymous"></script>
   <title>CodeHub | Feed</title>
+  <meta name="description" content="View posts and profiles on CodeHub">
 </head>
 <body class="bg-dark">
+  <!-- Header -->
   <header class="container-fluid" >
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid p-0 align-items-center">
@@ -24,6 +39,7 @@
   <main class="text-light">
     <div class="container-fluid border-bottom height">
       <!-- Banner, create post form, profile and profiles -->
+      <!-- 1.0 Banner -->
       <div class="pb-2" id="bannerContainer">
         <div class="d-flex align-items-center">
           <strong>Loading...</strong>
@@ -31,7 +47,7 @@
         </div>
       </div>
 
-      <!-- Profile goes here -->
+      <!-- 1.1 Profile goes here -->
       <div class="row border-bottom pb-3">
         <div class="col-lg-6 border-end px-3 mt-3 profile" id="profileContainer">
           <!-- Modal and form for update media -->
@@ -39,9 +55,9 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header">
+                <div class="modal-header bg-info text-light">
                   <p class="modal-title">Update Profile Media</p>
-                  <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                   <!-- Modal Body -->
                 <div class="modal-body bg-dark text-light">
@@ -56,7 +72,7 @@
                       <input type="url" class="form-control" name="avatar" title="Must be a valid URL">
                     </div>
                     <div class="d-grid">
-                      <button type="submit" class="btn btn-light">Update Media</button>
+                      <button type="submit" class="btn btn-primary">Update Media</button>
                     </div>
                   </form>
                 </div>
@@ -66,15 +82,15 @@
           </div>
         </div>
   
-          <!-- Create post / Profiles navigation -->
+          <!-- 1.2 Create post / Profiles navigation -->
         <div class="col-lg-6 px-3 mt-3">
-          <nav class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-createPost-tab" data-bs-toggle="tab" data-bs-target="#nav-createPost" type="button" role="tab" aria-controls="nav-createPost" aria-selected="true">Create Post</button>
-            <button class="nav-link" id="nav-profiles-tab" data-bs-toggle="tab" data-bs-target="#nav-profiles" type="button" role="tab" aria-controls="nav-profiles" aria-selected="true">Profiles</button>
+          <nav class="nav nav-pills" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-createPost-tab" data-bs-toggle="tab" data-bs-target="#nav-createPost" type="button" role="tab" aria-controls="nav-createPost" aria-selected="true">Post Form</button>
+            <button class="nav-link" id="nav-profiles-tab" data-bs-toggle="tab" data-bs-target="#nav-profiles" type="button" role="tab" aria-controls="nav-profiles" aria-selected="true">Users</button>
           </nav>
           <!-- Create Post and profiles content -->
           <div class="tab-content" id="nav-tabContent">
-            <!-- Create Post -->
+            <!-- 1.2.1 Create Post -->
             <div tabindex="0" class="tab-pane fade show active" id="nav-createPost" role="tabpanel">
               <form id="createPostForm">
      
@@ -88,32 +104,31 @@
                 
                 <div class="row pt-2">
                   <div class="mb-3 col">
-                    <label class="form-label" for="tags">Tags</label>
+                    <label class="form-label" for="tags">Tags<i class="ms-2 fa-solid fa-tags"></i></label>
                     <input class="form-control" type="text" name="tags" title="Label your post with tags">
                   </div>
             
                   <div class="mb-3 col">
-                    <label class="form-label" for="media">Image</label>
+                    <label class="form-label" for="media">Media<i class="ms-2 fa-regular fa-image"></i></label>
                     <input class="form-control" type="url" name="media" title="Must be a direct image url">
                   </div>
                 </div>
                 <div class="d-grid">
-                  <button type="submit" class="btn btn-primary">Publish</button>
+                  <button type="submit" class="btn btn-primary">Publish<i class="ms-2 fa-solid fa-share"></i></button>
                 </div>
               
               </form>
             </div>
-            <!-- Profiles -->
+            <!-- 1.2.2 Profiles -->
             <div tabindex="0" class="tab-pane fade" id="nav-profiles" role="tabpanel" aria-labelledby="nav-profiles-tab">
               <nav>
-                <div class="input-group input-group-sm mt-1">
+                <div class="input-group input-group-sm mt-2">
                   <input class="form-control" type="search" name="search" placeholder="Search Users" id="filterUsers">
                 </div>
               </nav>
-              <div class="users px-3">
+              <div class="users">
                 <div>
-                  <p class="sticky-top p-1 text-center text-dark bg-light w-25 mx-auto rounded-bottom">Users</p>
-                  <div id="usersContainer" class="row">
+                  <div id="usersContainer">
   
                   </div>
                 </div>
@@ -131,13 +146,13 @@
       </div>
     </div>
 
-    <!-- Update Post Modal -->
+    <!-- 1.3 Update Post Modal -->
     <div class="modal text-dark" tabindex="-1" id="updatePost">
-      <div class="modal-dialog bg-dark">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header bg-info text-light">
             <p class="modal-title">Update Post</p>
-            <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body bg-dark text-light">
             <form class="col-sm" id="updatePostForm">
@@ -174,15 +189,15 @@
       </div>
     </div>
 
-    <!-- Feed section -->
+    <!-- 1.4 Feed section -->
     <section class="container-fluid mt-3 px-sm-3 max-width">
       <div class="mb-3 d-flex align-self-center">
         <h2 class="me-2">Browse</h2>
-        <!-- SEARCH -->
+        <!-- 1.4.1 SEARCH -->
         <div class="input-group input-group-sm">
           <input class="form-control mx-2" type="search" name="search" placeholder="search by author or title" id="filterPosts">
         </div>
-        <!-- FILTER -->
+        <!-- 1.4.2 FILTER -->
         <div class="dropdown d-flex">
           <button data-bs-toggle="dropdown" class="btn btn-secondary d-flex align-items-center btn-sm dropdown-toggle"><i class="fa fa-filter me-3" aria-hidden="true"></i>
             Filter</button>
@@ -193,7 +208,7 @@
         </div>
       </div>
 
-      <!-- PostContainer -->
+      <!-- 1.4.3 PostContainer -->
       <div>
         <div id="feedContainer"> 
           <!-- POSTS goes here -->
@@ -201,8 +216,8 @@
         </div>
       </div>
 
-          <!-- Single post Modal -->
-    <div class="modal" id="singlePost">
+          <!-- 1.4.4 Single post Modal -->
+      <div class="modal" id="singlePost">
       <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
 
@@ -229,10 +244,10 @@
       </div>
     </div>
     </section>
-
   </main>
   <footer>
   </footer>
+  <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </body>

@@ -34,7 +34,6 @@ export async function commentOnPost(postData) {
     }, 1500);
     return comment;
   } else {
-    createToast('An error occured');
-    throw new Error;
+    return createToast('An error occured');
   }
 }

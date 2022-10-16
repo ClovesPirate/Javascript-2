@@ -41,7 +41,6 @@ export async function removePost(id) {
     }, 1500);
     return result;
   } else {
-    createToast('An error occured');
-    throw new Error;
+    return createToast('An error occured');
   }
 }
