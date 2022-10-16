@@ -7,8 +7,8 @@ const method = 'POST';
 
 /**
  * Function for creating a post
- * @param {{title: string, body: string, media: url, tags: string }} postData 
- * @returns {Object} response object 
+ * @param {{title: string, body: string, media: url, tags: string }} postData Object key/values passed in from postform.
+ * @returns If successfull creates a post on the server.
  * @example
  * ```js
  * // Created from form
@@ -19,7 +19,9 @@ const method = 'POST';
  *    media: 'url',
  * }
  *  createPost(postObj);
- * // expect {{title: 'my title, body: 'my post', tags: 'tag', media: 'url'}} created on the server.
+ * // expect 
+ * {title: 'my title', body: 'my post', tags: 'tag', media: 'url'} 
+ * /// created on the server.
  * ```
  */
 

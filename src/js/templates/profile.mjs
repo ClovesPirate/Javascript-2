@@ -1,6 +1,12 @@
 import { renderUpdatePost } from "./post.mjs";
 import { removePost } from "../api/posts/remove.mjs";
 
+
+/**
+ * Template for rendering profile
+ * @param {{name: string, banner: url, avatar: url; posts: array, _count: array}} postData Takes in values from getProfile() fetch request object;
+ * @returns the profile to HTML
+ */
 export function profileTemplate(postData) {
   const { name, banner, avatar, posts, _count} = postData;
 
@@ -112,10 +118,16 @@ export function profileTemplate(postData) {
   return profile;
 }
 
+
 export function renderProfileTemplate(postData, parent) {
   parent.append(profileTemplate(postData));
 }
 
+/**
+ * Function for rendering banner and avatar values to form
+ * @param {{banner: url, avatar: url}} media 
+ * @returns Takes in the stored values from getProfile() to render the stored values to form inputs
+ */
 export function renderUpdateMedia(media) {
   const { banner, avatar } = media;
 

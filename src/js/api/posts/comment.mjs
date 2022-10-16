@@ -7,8 +7,8 @@ const method = 'POST';
 
 /**
  * Sends a fetch request to comment on post based on id.
- * @param {{ id: number }} postData uses id value from object
- * @returns result of fetch response.
+ * @param {{ id: number }} postData uses id value from the post object.
+ * @returns If successful creates a comment on the server associated with the post.
  */
 
 export async function commentOnPost(postData) {

@@ -1,7 +1,11 @@
 import * as handler from '../js/handlers/index.mjs';
 
+/**
+ * Switch for handling different tasks depending on location.pathname
+ */
 export default function router() {
   const path = location.pathname;
+
   switch(path) {
     case '/index.html':
     handler.setloginFormListener();
@@ -26,5 +30,4 @@ export default function router() {
     handler.setSearchUsersFormListener();
     break;
   }
-  
 }

@@ -8,10 +8,9 @@ const type = '/media'
 const method = 'PUT';
 
 /**
- * 
- * @param {{ banner: URL, avatar: URL  }} postData 
- * @returns Updates {avatar} and {banner} object key values to the server.
- * @promise 
+ * Function for a fetch request to update media
+ * @param {{ banner: URL, avatar: URL  }} postData object with two key/value pairs
+ * @returns Updates {avatar} and {banner} object key/values on the server.
  */
 
 export async function updateMedia(postData) {

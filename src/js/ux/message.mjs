@@ -1,5 +1,15 @@
 const container = document.querySelector('body');
 
+/**
+ * Function for creating a toast
+ * @param {string} message type in the message you wish to be displayed
+ * @returns renders a toast on the page when called
+ * @example
+ * ```js
+ * createToast('Hello World');
+ * // Expect a toast with the content 'Hello World'
+ * ```
+ */
 export function createToast(message) {
   const toastContainer = document.createElement('div');
   const toast = document.createElement('div');

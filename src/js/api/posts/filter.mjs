@@ -6,6 +6,11 @@ const details = '?_author=true&_comments=true&_reactions=true&'
 const filterDesc = '_sort=title&sortOrder=desc';
 const filterAsc = '_sort=title&sortOrder=asc';
 
+/**
+ * Function for filtering
+ * @returns Filtered posts in ascending order
+ */
+
 export async function getFilteredPostsAscending() {
   const getPostsURL = `${API_SOCIAL_URL}${action}${details}${filterAsc}`;
 
@@ -14,6 +19,10 @@ export async function getFilteredPostsAscending() {
   return result;
 }
 
+/**
+ * Function for filtering
+ * @returns FilteredPosts in descending order
+ */
 export async function getFilteredPostsDescending() {
   const getPostsURL = `${API_SOCIAL_URL}${action}${details}${filterDesc}`;
 

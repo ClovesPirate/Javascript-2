@@ -8,18 +8,18 @@ const method = 'PUT';
 /**
  * 
  * @param {{title: string, body: string, tags: string, media: URL, id: number }} postData The object is created from form.
- * @returns a response object from server. 
+ * @returns updates the existing post with new values
  * @example 
  * ```js
  *  // Passed in from form
- *  const myNewObj = {
+ *  const updatedObj = {
  *    title: 'my title',
  *    body: 'my post',
  *    tags: 'my tag',
  *    media: 'url',
  *    id: 332,
  * }
- *  updatePost(myNewObj);
+ *  updatePost(updatedObj);
  *  // Expect to update post with ID 332 with new content
  * ```
  */

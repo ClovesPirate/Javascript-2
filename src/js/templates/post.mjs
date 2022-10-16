@@ -5,7 +5,7 @@ import { load } from "../handlers/storage/index.mjs";
 
 /**
  * HTML template for posts
- * @param {object} postData 
+ * @param {object} postData Object from getPosts();
  * @returns A HTML template for fetched data
  */
 export function postTemplate(postData) {
@@ -50,6 +50,11 @@ export function postTemplate(postData) {
   return post;
 }
 
+/**
+ * Function for single post layout and function
+ * @param {object} postData object from getPosts();
+ * @returns renders the entire post
+ */
 export function SinglePostTemplate(postData) {
   const profile = load('profile');
 
@@ -110,26 +115,18 @@ export function renderUpdatePost(postData) {
 }
 
 /**
- * @param {object} postData first value
- * @param {element} parent second value
- */
-
-export function renderPostTemplate(postData, parent) {
-  parent.append(postTemplate(postData));
-}
-
-/**
+ * Renders an array of objects into a container
  * @param {[object]} postDataList 
- * @param {element} parent 
+ * @param {element} parent What element to append to.
  */
 export function renderPostTemplates(postDataList, parent) {
   parent.append(...postDataList.map(postTemplate));
 }
 
 /**
- * 
- * @param {object} postData first value
- * @param {element} parent second value
+ * Renders body content to post
+ * @param {{title: string, body: string, media: URL, author: string}} postData Uses these values from the post object
+ * @param {element} parent What element to append to.
  * @returns container with content from {postData} with styling
  */
 export function renderBodyToTemplate(postData, parent) {
@@ -173,9 +170,9 @@ export function renderBodyToTemplate(postData, parent) {
 }
 
 /**
- * 
- * @param {object} postData 
- * @param {element} parent 
+ * Function for rendering button to post
+ * @param {{id}} postData Stores the ID from the post object to render a single post modal on click
+ * @param {element} parent What element variable to append to
  * @returns returns button with content and styling from {postData}
  */
 export function renderButtonToTemplate(postData, parent) {
@@ -203,6 +200,12 @@ export function renderButtonToTemplate(postData, parent) {
   return button;
 }
 
+/**
+ * Function for rendering name and avatar to HTML
+ * @param {{author: object, created: string}} postData 
+ * @param {element} parent What element to append to
+ * @returns Returns a container with ${author.avatar} ${author.name} ${created}
+ */
 export function renderAuthorToTemplate(postData, parent) {
   const { author, created } = postData;
 
@@ -218,7 +221,7 @@ export function renderAuthorToTemplate(postData, parent) {
   avatar.classList.add( 'avatar-post');
   postCreated.classList.add('d-flex', 'align-items-center', 'ms-2');
   postTime.classList.add('text-muted', 'fs-6', 'ms-1');
-  postDate.classList.add('text-muted', 'fs-6')
+  postDate.classList.add('text-muted', 'fs-6');
 
   postAuthor.innerHTML = `${author.name}`;
   avatar.src = author.avatar;
@@ -237,19 +240,27 @@ export function renderAuthorToTemplate(postData, parent) {
   return author;
 }
 
+/**
+ * Function for rendering conditional button interaction.
+ * @param {{name: string}} profile Profile object of the current logged in user
+ * @param {{author: string}} postData Object from 
+ * @param {element} parent What element this content is to be appended to.
+ * @returns If the user matches the author of a post, create buttons and listeners for updating and removing posts.
+ */
+
 export function renderConditionalInteraction(profile, postData, parent) {
   const { author } = postData;
   const { name } = author;
  
   if (profile.name === name) {
-
+    // Editbutton
     const editButton = document.createElement('button');
     editButton.classList.add('btn', 'btn-secondary', 'btn-sm');
     editButton.setAttribute('data-bs-toggle', 'modal');
     editButton.setAttribute('data-bs-target', '#updatePost');
     editButton.innerHTML = `<i class="me-2 fa fa-pencil" aria-hidden="true"></i>Edit
     `;
-
+    // Delete button
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('btn', 'btn-danger', 'btn-sm', 'opacity-75');
     deleteButton.setAttribute('type', 'submit');
@@ -267,23 +278,35 @@ export function renderConditionalInteraction(profile, postData, parent) {
   }
 };
 
+/**
+ * Function for rendering comments to HTML
+ * @param {object} postData Object from get post request.
+ */
+
 export function renderCommentsToPost(postData) {
   const commentContainer = document.querySelector('#commentSection');
   commentContainer.innerHTML = "";
   const { comments } = postData;
 
+  // Render HTML for every comment
   comments.forEach(comment => {
     const { body, owner } = comment;
+
+    // Create Elements
     const content = document.createElement('small');
     const creator = document.createElement('small');
     const container = document.createElement('div');
+
+    // Add classes
     container.classList.add('mt-3', 'p-2', 'p-3', 'bg-dark', 'd-sm-flex')
     creator.classList.add('fs-6');
     content.classList.add('fs-6', 'd-block', 'text-muted', 'px-sm-3', 'align-baseline');
 
+    // Content of comment
     content.innerHTML = `${body}`;
     creator.innerHTML = owner;
 
+    // Appending elements
     container.append(creator, content);
     commentContainer.append(container);
     return commentContainer;

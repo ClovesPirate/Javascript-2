@@ -7,7 +7,8 @@ const method = 'POST';
 
 /**
  * Login fetch function
- * @param {{email: string, password: string}} profile Profile values passed in from loginform.
+ * @param {{email: string, password: string}} profile Profile values passed in from loginform, accepting email and password as string parameters in the object.
+ * @returns Logs in the user if parameters are verified with the server, and redirects to feed.
  */
 
 export async function login(profile) {
@@ -39,7 +40,7 @@ export async function login(profile) {
   }
 
   } catch(error) {
-      createToast('An unknown error occured, try again later')
+      createToast('An unknown error occured, try again later');
       console.log(error);
   }
 }

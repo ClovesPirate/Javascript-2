@@ -1,4 +1,4 @@
-import { load } from "../handlers/storage/index.mjs"
+import { load } from "../handlers/storage/index.mjs";
 
 export function headers() {
   const token = load('token');
@@ -12,7 +12,7 @@ export function headers() {
 /**
  * Fetch function with authorization using the accessToken
  * @param {string} url API endpoint
- * @param {{ ...options: object, headers: headers() }} options 
+ * @param {{ ...options: {method: string, body: object}, headers: headers() }} options Takes in optional method and body object. 
  */
 export async function authFetch(url, options = {}) {
   try {

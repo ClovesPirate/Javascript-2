@@ -1,10 +1,11 @@
 import { startFollowing, stopFollowing } from "../api/profile/following.mjs";
 
+/**
+ * 
+ * @param {{name: string, avatar: url, _count: array}} postData object from getUsers() function
+ * @returns renders userdata to HTML
+ */
 export function userTemplate(postData) {
-
-
-
-
   const { name, avatar, _count } = postData;
 
   const user = document.createElement('div');
@@ -56,6 +57,11 @@ export function userTemplate(postData) {
   return user;
 }
 
+/**
+ * 
+ * @param {{name: string, avatar: url}} postData object from getProfile() function
+ * @returns renders friend to HTML
+ */
 export function friendTemplate(postData) {
   const { name, avatar } = postData;
 
@@ -85,13 +91,18 @@ export function friendTemplate(postData) {
 
 
 /**
- * @param {[object]} postDataList 
- * @param {element} parent 
+ * @param {[object]} postDataList An array of objects from getUsers() fetch
+ * @param {element} parent element to append content to
  */
 export function renderUserTemplates(postDataList, parent) {
   parent.append(...postDataList.map(userTemplate));
 }
 
+/**
+ * 
+ * @param {[object]} postDataList An array of objects from getProfile() fetch
+ * @param {element} parent elemnt to append content to
+ */
 export function renderFriendTemplates(postDataList, parent) {
   parent.append(...postDataList.map(friendTemplate));
 }

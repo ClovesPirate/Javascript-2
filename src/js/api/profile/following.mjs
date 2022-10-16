@@ -6,8 +6,8 @@ const action = '/profiles/';
 const method = 'PUT';
 
 /**
- * 
- * @param {string} name 
+ * Function for a fetch request to stop following user
+ * @param {string} name name of user
  * @returns Stop following {name}
  */
 
@@ -34,8 +34,8 @@ export async function stopFollowing(name) {
 }
 
 /**
- * 
- * @param {string} name 
+ * Function for a fetch request to start following user
+ * @param {string} name name of user
  * @returns start following {name}
  */
 export async function startFollowing(name) {
