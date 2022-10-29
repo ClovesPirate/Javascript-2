@@ -1,4 +1,24 @@
 {
+ 
+  "name": "javascript-2",
+  "description": "# Goal",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClovesPirate/Javascript-2.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "Noroff",
+    "CRUD"
+  ],
+  "author": "Truls Haakenstad <truls.haakenstad@outlook.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClovesPirate/Javascript-2/issues"
+  },
+  "homepage": "https://github.com/ClovesPirate/Javascript-2#readme",
   "dependencies": {
     "bootstrap": "^5.2.1"
   },
