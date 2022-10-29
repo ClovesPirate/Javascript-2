@@ -54,6 +54,9 @@
   "devDependencies": {
  
    
+  "jest": "^29.2.0",
+ 
+   
   "jsdoc": "^3.6.11",
  
    
