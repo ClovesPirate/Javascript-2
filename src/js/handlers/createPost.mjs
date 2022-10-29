@@ -14,8 +14,9 @@ export function setCreatePostFormListener() {
       const form = e.target;
       const formData = new FormData(form);
       const post = Object.fromEntries(formData.entries());
-      
 
+      post.tags = [post.tags];
+      
       if (!post.tags) {
         delete post.tags;
       }

@@ -13,10 +13,14 @@ export function setUpdatePostFormListener() {
     const formData = new FormData(form);
     const post = Object.fromEntries(formData.entries());
 
+    // request object only accepts an array
+    post.tags = [post.tags];
+
+    // Remove tags from form object if left blank
     if (!post.tags) {
       delete post.tags;
     }
-
+    // Remove media key from form object if left blank
     if (!post.media) {
       delete post.media;
     }
