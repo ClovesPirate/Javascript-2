@@ -1,36 +1,82 @@
 {
  
   "name": "javascript-2",
+ 
   "description": "# Goal",
-  "version": "1.0.0",
+ 
+  "version": "1.0.1",
+ 
   "main": "src/index.js",
+ 
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ClovesPirate/Javascript-2.git"
+ 
+   
+  "type": "git",
+ 
+   
+  "url": "git+https://github.com/ClovesPirate/Javascript-2.git"
+ 
   },
+ 
   "keywords": [
-    "JavaScript",
-    "Noroff",
-    "CRUD"
+ 
+   
+  "JavaScript",
+ 
+   
+  "Noroff",
+ 
+   
+  "CRUD"
+ 
   ],
+ 
   "author": "Truls Haakenstad <truls.haakenstad@outlook.com>",
+ 
   "license": "ISC",
+ 
   "bugs": {
-    "url": "https://github.com/ClovesPirate/Javascript-2/issues"
+ 
+   
+  "url": "https://github.com/ClovesPirate/Javascript-2/issues"
+ 
   },
+ 
   "homepage": "https://github.com/ClovesPirate/Javascript-2#readme",
+ 
   "dependencies": {
-    "bootstrap": "^5.2.1"
+ 
+   
+  "bootstrap": "^5.2.1"
+ 
   },
+ 
   "devDependencies": {
-    "jsdoc": "^3.6.11",
-    "live-server": "^1.1.0",
-    "prettier": "2.7.1",
-    "sass": "^1.55.0"
+ 
+   
+  "jsdoc": "^3.6.11",
+ 
+   
+  "live-server": "^1.1.0",
+ 
+   
+  "prettier": "2.7.1",
+ 
+   
+  "sass": "^1.55.0"
+ 
   },
+ 
   "scripts": {
-    "build": "sass src/scss:dist/css",
-    "watch": "sass --watch src/scss:dist/css & live-server",
-    "docs": "jsdoc -c ./conf.json -r"
+ 
+   
+  "build": "sass src/scss:dist/css",
+ 
+   
+  "watch": "sass --watch src/scss:dist/css & live-server",
+ 
+   
+  "docs": "jsdoc -c ./conf.json -r"
+ 
   }
 }
