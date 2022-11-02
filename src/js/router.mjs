@@ -26,18 +26,19 @@ export default function router() {
     case '/register/':
     handler.setRegisterFormListener();
     break;
-    // case `${hostPath}/feed/`:
-    // handler.setCreatePostFormListener();
-    // handler.setGetPosts();
-    // handler.setUpdatePostFormListener();
-    // handler.setSearchPostsFormListener();
-    // handler.setFilterPostListener();
-    // handler.setLogoutEventListener();
-    // handler.setCreateCommentListener();
-    // handler.setGetProfile();
-    // handler.setGetUsers();
-    // handler.setUpdateMediaFormListener();
-    // handler.setSearchUsersFormListener();
+    case `${hostPath}/feed/`:
+    handler.setCreatePostFormListener();
+    handler.setGetPosts();
+    handler.setUpdatePostFormListener();
+    handler.setSearchPostsFormListener();
+    handler.setFilterPostListener();
+    handler.setLogoutEventListener();
+    handler.setCreateCommentListener();
+    handler.setGetProfile();
+    handler.setGetUsers();
+    handler.setUpdateMediaFormListener();
+    handler.setSearchUsersFormListener();
+    break;
     case '/feed/':
     handler.setGetPosts();
     handler.setCreatePostFormListener();
@@ -50,7 +51,6 @@ export default function router() {
     handler.setGetUsers();
     handler.setUpdateMediaFormListener();
     handler.setSearchUsersFormListener();
-    console.log('hello');
     break;
   }
 }
