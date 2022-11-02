@@ -33,13 +33,13 @@ export function profileTemplate(postData) {
   bannerContainer.innerHTML = "";
 
   if (!banner) {
-    profileBanner.src = "../../../media/images/banner-100.jpg";
+    profileBanner.src = "./../../../media/images/banner-100.jpg";
   } else {
     profileBanner.src = banner;
   }
 
   if (!avatar) {
-    profilePicture.src = "../../../media/images/stock-avatar.jpg";
+    profilePicture.src = "./../../../media/images/stock-avatar.jpg";
   } else {
     profilePicture.src = avatar;
   }

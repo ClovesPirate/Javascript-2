@@ -80,7 +80,7 @@ export function friendTemplate(postData) {
   picture.src = avatar;
 
   if (!avatar) {
-    picture.src = '/media/images/stock-avatar.jpg';
+    picture.src = './media/images/stock-avatar.jpg';
   }
 
   user.addEventListener('click', () => stopFollowing(name));
