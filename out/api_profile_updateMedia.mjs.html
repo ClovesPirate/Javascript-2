@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: api/profile/updateMedia.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: api/profile/updateMedia.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { load } from "../../handlers/storage/index.mjs";
+import { createToast } from "../../ux/message.mjs";
+import { authFetch } from "../authFetch.mjs";
+import { API_SOCIAL_URL } from "../constants.mjs";
+
+const action = '/profiles/';
+const type = '/media'
+const method = 'PUT';
+
+/**
+ * Function for a fetch request to update media
+ * @param {{ banner: URL, avatar: URL  }} postData object with two key/value pairs
+ * @returns Updates {avatar} and {banner} object key/values on the server.
+ */
+
+export async function updateMedia(postData) {
+  const { name } = load('profile');
+  
+  if (!name) {
+    throw new Error('Update requires a name');
+  }
+
+  const updateMediaURL = `${API_SOCIAL_URL}${action}${name}${type}`;
+
+  const response = await authFetch(updateMediaURL, {
+    method,
+    body: JSON.stringify(postData),
+  })
+
+  if (response.ok) {
+    const result = await response.json();
+    createToast('Profile media updated.');
+    window.setTimeout(function () {
+      location.reload();
+    }, 1500);
+    return result;
+  } else {
+    return createToast('An error occured');
+  }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#authFetch">authFetch</a></li><li><a href="global.html#commentOnPost">commentOnPost</a></li><li><a href="global.html#createPost">createPost</a></li><li><a href="global.html#createToast">createToast</a></li><li><a href="global.html#errorMessage">errorMessage</a></li><li><a href="global.html#friendTemplate">friendTemplate</a></li><li><a href="global.html#getFilteredPostsAscending">getFilteredPostsAscending</a></li><li><a href="global.html#getFilteredPostsDescending">getFilteredPostsDescending</a></li><li><a href="global.html#getPost">getPost</a></li><li><a href="global.html#getPosts">getPosts</a></li><li><a href="global.html#getProfile">getProfile</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#handleNameControlInput">handleNameControlInput</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logoutButton">logoutButton</a></li><li><a href="global.html#postTemplate">postTemplate</a></li><li><a href="global.html#profileTemplate">profileTemplate</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removePost">removePost</a></li><li><a href="global.html#renderAuthorToTemplate">renderAuthorToTemplate</a></li><li><a href="global.html#renderBodyToTemplate">renderBodyToTemplate</a></li><li><a href="global.html#renderButtonToTemplate">renderButtonToTemplate</a></li><li><a href="global.html#renderCommentsToPost">renderCommentsToPost</a></li><li><a href="global.html#renderConditionalInteraction">renderConditionalInteraction</a></li><li><a href="global.html#renderFriendTemplates">renderFriendTemplates</a></li><li><a href="global.html#renderPostTemplates">renderPostTemplates</a></li><li><a href="global.html#renderUpdateMedia">renderUpdateMedia</a></li><li><a href="global.html#renderUpdatePost">renderUpdatePost</a></li><li><a href="global.html#renderUserTemplates">renderUserTemplates</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#setCreateCommentListener">setCreateCommentListener</a></li><li><a href="global.html#setCreatePostFormListener">setCreatePostFormListener</a></li><li><a href="global.html#setGetPosts">setGetPosts</a></li><li><a href="global.html#setGetProfile">setGetProfile</a></li><li><a href="global.html#setloginFormListener">setloginFormListener</a></li><li><a href="global.html#setRegisterFormListener">setRegisterFormListener</a></li><li><a href="global.html#setUpdateMediaFormListener">setUpdateMediaFormListener</a></li><li><a href="global.html#setUpdatePostFormListener">setUpdatePostFormListener</a></li><li><a href="global.html#SinglePostTemplate">SinglePostTemplate</a></li><li><a href="global.html#startFollowing">startFollowing</a></li><li><a href="global.html#stopFollowing">stopFollowing</a></li><li><a href="global.html#updateMedia">updateMedia</a></li><li><a href="global.html#updatePost">updatePost</a></li><li><a href="global.html#userTemplate">userTemplate</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sun Oct 16 2022 17:37:32 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

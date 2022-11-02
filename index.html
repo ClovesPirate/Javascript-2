@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./dist/css/styles.css">
-  <script src="./js/index.mjs" defer type="module"></script>
+  <meta name="description" content="CodeHub is a social platform for programmers at Noroff">
+  <!-- Scripts -->
+  <script src="src/js/index.mjs" defer type="module"></script>
   <script src="https://kit.fontawesome.com/7bac96c235.js" crossorigin="anonymous"></script>
-  <title>CodeHub</title>
+
+  <link rel="stylesheet" href="./dist/css/styles.css">
+  <title>CodeHub | Log in</title>
 </head>
 <body class="bg-dark bg-image">
 
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
-        <a href="/" class="navbar-brand">
-          <i class="fa-solid fa-signature"></i>
-          CodeHub
-        </a>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link text-secondary" aria-current="page" href="/profile/login/">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-secondary" href="/profile/register/">Register</a>
-            </li>
-          </ul>
-      </div>
-    </nav>
   </header>
   <main class="text-light d-flex align-items-center">
-    <div class="container-sm flex-column justify-content-center align-items-center max-width">
+
+    <div class="container-sm flex-column justify-content-center align-items-center max-width bg-info py-5 rounded">
+
       <div>
-        <h1 class="text-center" href="#">
-          <i class="fa-solid fa-signature"></i>
-          CodeHub
+        <h1 class="text-center" href="/">
+          <i class="text-light bg-primary p-2 rounded fa-solid fa-signature"></i>
+          <span class="ms-1"> CodeHub</span>
         </h1>
-        <p class="text-center">Welcome to CodeHub - a social platform for programmers at Noroff.</p>
+        <p class="text-center">Welcome to CodeHub - a social platform for developers at Noroff.</p>
       </div>
-      <div class="bg-light d-grid p-3 rounded">
-        <a class="btn btn-primary" href="/profile/login/">Login</a>
-        <a class="btn btn-outline-primary mt-1" href="/profile/register/">Register</a>
+
+      <div class="container-fluid d-flex justify-content-center align-self-center">
+        <form id="loginForm" class="p-sm-3 p-1">
+
+          <div class="row mb-3 g-3">
+
+            <div class="col-sm">
+              <input class="form-control" type="email" name="email" placeholder="Email" aria-placeholder="email" required pattern="^[\w\-.]+@(stud.)?noroff.no$" title="The email value must be a valid stud.noroff.no or noroff.no email address.">
+            </div>
+
+            <div class="col-sm">
+              <input class="form-control" type="password" placeholder="Password" name="password" required minlength="8" title="The password value must be at least 8 characters.">
+            </div>
+
+          </div>
+
+          <div class="bg-light d-grid p-sm-3 p-2 rounded">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <strong class="text-center my-2 mt-sm-4 text-dark">Don't have an account? <a href="/register">Register</a></strong>
+          </div>
+
+        </form>
       </div>
+
     </div>
+
   </main>
 
   <footer>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </body>
 </html>

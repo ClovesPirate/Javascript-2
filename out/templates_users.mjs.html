@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: templates/users.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: templates/users.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { startFollowing, stopFollowing } from "../api/profile/following.mjs";
+
+/**
+ * 
+ * @param {{name: string, avatar: url, _count: array}} postData object from getUsers() function
+ * @returns renders userdata to HTML
+ */
+export function userTemplate(postData) {
+  const { name, avatar, _count } = postData;
+
+  const user = document.createElement('div');
+  const userName = document.createElement('strong');
+  const picture = document.createElement('img');
+  const countContainer = document.createElement('div');
+  const userFollowing = document.createElement('small');
+  const userFollowers = document.createElement('small'); 
+  const userPosts = document.createElement('small');
+  const userContainer = document.createElement('div');
+
+
+  user.classList.add('user', 'position-relative', 'bg-info', 'd-flex', 'align-items-center', 'p-3', 'my-2', 'justify-content-between');
+  userContainer.classList.add('d-flex', 'align-items-center')
+  picture.classList.add('img-fluid', 'd-block', 'avatar');
+  userName.classList.add('text-break', 'ms-3');
+  countContainer.classList.add('p-2', 'bg-dark', 'ms-5', 'rounded');
+  userFollowers.classList.add('bg-dark', 'p-2', 'me-1')
+  userFollowing.classList.add('bg-dark', 'p-2', 'mx-1')
+  userPosts.classList.add('bg-dark', 'ms-1')
+
+
+  userName.innerHTML = name;
+  picture.src = avatar;
+  picture.alt = `${userName} Avatar`;
+  userFollowers.innerHTML = `&lt;i class="ms-2 fa fa-users" aria-hidden="true">&lt;/i>
+  ${_count.followers}`;
+  userFollowing.innerHTML = `&lt;i class="ms-2 fa-solid fa-user-group">&lt;/i>${_count.following}`;
+  userPosts.innerHTML = `&lt;i class="ms-2 fa fa-envelope-o" aria-hidden="true">&lt;/i>
+  ${_count.posts}`;
+
+  user.setAttribute('data-bs-toggle', 'tooltip');
+  user.setAttribute('data-bs-title', 'follow');
+  user.setAttribute('data-bs-placement', 'left');
+
+  const tooltip = new bootstrap.Tooltip(user);
+  
+
+  if (!avatar) {
+    picture.src = '/media/images/stock-avatar.jpg';
+  }
+
+  user.addEventListener('click', () => startFollowing(name));
+
+  userContainer.append(picture, userName)
+  countContainer.append(userPosts, userFollowing, userFollowers);
+  user.append(userContainer, countContainer);
+
+  return user;
+}
+
+/**
+ * 
+ * @param {{name: string, avatar: url}} postData object from getProfile() function
+ * @returns renders friend to HTML
+ */
+export function friendTemplate(postData) {
+  const { name, avatar } = postData;
+
+  const user = document.createElement('div');
+  const userName = document.createElement('p');
+  const picture = document.createElement('img');
+  const message = document.createElement('small');
+
+  user.classList.add('user', 'position-relative', 'col-lg-1', 'col-3')
+  picture.classList.add('img-fluid', 'd-block', 'mx-auto', 'avatar');
+  userName.classList.add('text-center', 'mx-auto', 'text-break');
+  message.classList.add('hidden', 'position-absolute', 'top-50', 'start-50', 'translate-middle', 'text-dark', 'bg-light', 'px-2', 'py-1', 'rounded');
+
+  message.innerHTML = 'Unfollow';
+  userName.innerHTML = name;
+  picture.src = avatar;
+
+  if (!avatar) {
+    picture.src = '/media/images/stock-avatar.jpg';
+  }
+
+  user.addEventListener('click', () => stopFollowing(name));
+  user.append(picture, userName, message);
+
+  return user;
+}
+
+
+/**
+ * @param {[object]} postDataList An array of objects from getUsers() fetch
+ * @param {element} parent element to append content to
+ */
+export function renderUserTemplates(postDataList, parent) {
+  parent.append(...postDataList.map(userTemplate));
+}
+
+/**
+ * 
+ * @param {[object]} postDataList An array of objects from getProfile() fetch
+ * @param {element} parent elemnt to append content to
+ */
+export function renderFriendTemplates(postDataList, parent) {
+  parent.append(...postDataList.map(friendTemplate));
+}
+
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#authFetch">authFetch</a></li><li><a href="global.html#commentOnPost">commentOnPost</a></li><li><a href="global.html#createPost">createPost</a></li><li><a href="global.html#createToast">createToast</a></li><li><a href="global.html#errorMessage">errorMessage</a></li><li><a href="global.html#friendTemplate">friendTemplate</a></li><li><a href="global.html#getFilteredPostsAscending">getFilteredPostsAscending</a></li><li><a href="global.html#getFilteredPostsDescending">getFilteredPostsDescending</a></li><li><a href="global.html#getPost">getPost</a></li><li><a href="global.html#getPosts">getPosts</a></li><li><a href="global.html#getProfile">getProfile</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#handleNameControlInput">handleNameControlInput</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logoutButton">logoutButton</a></li><li><a href="global.html#postTemplate">postTemplate</a></li><li><a href="global.html#profileTemplate">profileTemplate</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removePost">removePost</a></li><li><a href="global.html#renderAuthorToTemplate">renderAuthorToTemplate</a></li><li><a href="global.html#renderBodyToTemplate">renderBodyToTemplate</a></li><li><a href="global.html#renderButtonToTemplate">renderButtonToTemplate</a></li><li><a href="global.html#renderCommentsToPost">renderCommentsToPost</a></li><li><a href="global.html#renderConditionalInteraction">renderConditionalInteraction</a></li><li><a href="global.html#renderFriendTemplates">renderFriendTemplates</a></li><li><a href="global.html#renderPostTemplates">renderPostTemplates</a></li><li><a href="global.html#renderUpdateMedia">renderUpdateMedia</a></li><li><a href="global.html#renderUpdatePost">renderUpdatePost</a></li><li><a href="global.html#renderUserTemplates">renderUserTemplates</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#setCreateCommentListener">setCreateCommentListener</a></li><li><a href="global.html#setCreatePostFormListener">setCreatePostFormListener</a></li><li><a href="global.html#setGetPosts">setGetPosts</a></li><li><a href="global.html#setGetProfile">setGetProfile</a></li><li><a href="global.html#setloginFormListener">setloginFormListener</a></li><li><a href="global.html#setRegisterFormListener">setRegisterFormListener</a></li><li><a href="global.html#setUpdateMediaFormListener">setUpdateMediaFormListener</a></li><li><a href="global.html#setUpdatePostFormListener">setUpdatePostFormListener</a></li><li><a href="global.html#SinglePostTemplate">SinglePostTemplate</a></li><li><a href="global.html#startFollowing">startFollowing</a></li><li><a href="global.html#stopFollowing">stopFollowing</a></li><li><a href="global.html#updateMedia">updateMedia</a></li><li><a href="global.html#updatePost">updatePost</a></li><li><a href="global.html#userTemplate">userTemplate</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sun Oct 16 2022 17:37:32 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

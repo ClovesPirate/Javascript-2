@@ -3,10 +3,83 @@
 
 body {
   min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 main {
   min-height: 90vh;
+}
+
+// Avatars
+.avatar-post, .avatar {
+  width: 2em;
+  border-radius: 100vw;
+  aspect-ratio: 1;
+}
+
+.avatar {
+  width: 3em;
+}
+
+.avatar-sm {
+  width: clamp(4.5em, 10vw, 7em);
+  aspect-ratio: 1;
+}
+
+// Logo
+.logo {
+  max-width: 1.5em;
+  aspect-ratio: 1;
+}
+
+
+// Form control and  buttons
+.form-control {
+  border-radius: 0;
+  border: none;
+  background-color: $input;
+  color: $light;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+
+// Posts and users
+.myPosts, .users, .friends {
+  min-height: fit-content;
+  max-height: 13.4em;
+  overflow: scroll;
+  scrollbar-width: none;
+  scroll-snap-type: mandatory;
+}
+
+.users {
+  max-height: 22.1em;
+}
+
+.user:hover {
+  cursor: pointer;
+  border-radius: 25vw;
+  transition: all 300ms ease-in-out;
+}
+
+// Banner
+.banner {
+  width: 100vw;
+  max-height: 13em;
+}
+
+// Toast
+.toast {
+  background-color: $light;
+}
+
+// Utils
+.max-width {
+  max-width: 700px;
 }
 
 .bg-image {
@@ -15,10 +88,16 @@ main {
   background-repeat: no-repeat;
 }
 
-i {
-  color: $secondary;
+.width {
+  width: clamp(5em, 10vw, 3em);
 }
 
-.max-width {
-  max-width: 700px;
+.user:hover {
+  .hidden {
+    opacity: 1;
+  }
+}
+
+.hidden {
+  opacity: 0;
 }

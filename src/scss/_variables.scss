@@ -1,7 +1,28 @@
 // Colours
-$dark: #333;
-$primary: rgb(108, 57, 108);
-$secondary: rgb(209, 179, 209);
-$info: #999;
+$dark: #1f2833;
+$primary: #37567b;
+$secondary: #c5d0d1;
+$light: rgb(234, 237, 244);
+$info: #28323d;
+$input: #00000024;
+$danger: rgb(106, 95, 95);
 
-// Fonts
+// Tooltip
+$tooltip-bg: $light;
+$tooltip-color: $dark;
+
+// Nav
+$nav-pills-link-active-color: $dark;
+$nav-pills-link-active-bg: $light;
+$nav-link-color: $light;
+$nav-link-hover-color: rgba(255, 255, 255, 0.585);
+
+$input-placeholder-color: $light;
+$input-focus-bg: $info;
+$input-focus-color: $light;
+
+
+
+
+
+

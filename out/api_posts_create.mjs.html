@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: api/posts/create.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: api/posts/create.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { createToast } from "../../ux/message.mjs";
+import { authFetch } from "../authFetch.mjs";
+import { API_SOCIAL_URL } from "../constants.mjs";
+
+const action = '/posts/';
+const method = 'POST';
+
+/**
+ * Function for creating a post
+ * @param {{title: string, body: string, media: url, tags: string }} postData Object key/values passed in from postform.
+ * @returns If successfull creates a post on the server.
+ * @example
+ * ```js
+ * // Created from form
+ *  const postObj = {
+ *    title: 'my title',
+ *    body: 'my post',
+ *    tags: 'tag',
+ *    media: 'url',
+ * }
+ *  createPost(postObj);
+ * // expect 
+ * {title: 'my title', body: 'my post', tags: 'tag', media: 'url'} 
+ * /// created on the server.
+ * ```
+ */
+
+export async function createPost(postData) {
+  const createPostURL = API_SOCIAL_URL + action;
+  const headers = {
+    method,
+    body: JSON.stringify(postData),
+  }
+
+  const response = await authFetch(createPostURL, headers);
+  if (response.ok) {
+    const post = await response.json();
+    createToast('Post created successfully');
+    window.setTimeout(function () {
+      location.reload();
+    }, 1500);
+    return post;
+  } else {
+     return createToast('An error occured');
+  }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#authFetch">authFetch</a></li><li><a href="global.html#commentOnPost">commentOnPost</a></li><li><a href="global.html#createPost">createPost</a></li><li><a href="global.html#createToast">createToast</a></li><li><a href="global.html#errorMessage">errorMessage</a></li><li><a href="global.html#friendTemplate">friendTemplate</a></li><li><a href="global.html#getFilteredPostsAscending">getFilteredPostsAscending</a></li><li><a href="global.html#getFilteredPostsDescending">getFilteredPostsDescending</a></li><li><a href="global.html#getPost">getPost</a></li><li><a href="global.html#getPosts">getPosts</a></li><li><a href="global.html#getProfile">getProfile</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#handleNameControlInput">handleNameControlInput</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logoutButton">logoutButton</a></li><li><a href="global.html#postTemplate">postTemplate</a></li><li><a href="global.html#profileTemplate">profileTemplate</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removePost">removePost</a></li><li><a href="global.html#renderAuthorToTemplate">renderAuthorToTemplate</a></li><li><a href="global.html#renderBodyToTemplate">renderBodyToTemplate</a></li><li><a href="global.html#renderButtonToTemplate">renderButtonToTemplate</a></li><li><a href="global.html#renderCommentsToPost">renderCommentsToPost</a></li><li><a href="global.html#renderConditionalInteraction">renderConditionalInteraction</a></li><li><a href="global.html#renderFriendTemplates">renderFriendTemplates</a></li><li><a href="global.html#renderPostTemplates">renderPostTemplates</a></li><li><a href="global.html#renderUpdateMedia">renderUpdateMedia</a></li><li><a href="global.html#renderUpdatePost">renderUpdatePost</a></li><li><a href="global.html#renderUserTemplates">renderUserTemplates</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#setCreateCommentListener">setCreateCommentListener</a></li><li><a href="global.html#setCreatePostFormListener">setCreatePostFormListener</a></li><li><a href="global.html#setGetPosts">setGetPosts</a></li><li><a href="global.html#setGetProfile">setGetProfile</a></li><li><a href="global.html#setloginFormListener">setloginFormListener</a></li><li><a href="global.html#setRegisterFormListener">setRegisterFormListener</a></li><li><a href="global.html#setUpdateMediaFormListener">setUpdateMediaFormListener</a></li><li><a href="global.html#setUpdatePostFormListener">setUpdatePostFormListener</a></li><li><a href="global.html#SinglePostTemplate">SinglePostTemplate</a></li><li><a href="global.html#startFollowing">startFollowing</a></li><li><a href="global.html#stopFollowing">stopFollowing</a></li><li><a href="global.html#updateMedia">updateMedia</a></li><li><a href="global.html#updatePost">updatePost</a></li><li><a href="global.html#userTemplate">userTemplate</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sun Oct 16 2022 17:37:32 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

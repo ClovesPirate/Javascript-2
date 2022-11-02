@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../dist/css/styles.css">
+  <script src="../src/js/index.mjs" defer type="module"></script>
+  <script src="https://kit.fontawesome.com/7bac96c235.js" crossorigin="anonymous"></script>
+  <meta name="description" content="Register to CodeHub">
+  <title>CodeHub | Register</title>
+</head>
+<body class="bg-dark bg-image">
+
+  <header>
+    <a class="fs-6 btn btn-light btn link-stretched position-absolute start-0" href="/"><i class="me-1 fa fa-backward" aria-hidden="true"></i>
+      Back to Log in</a>
+  </header>
+
+  <main class="flex-grow-1 text-light d-flex">
+    <div class="container-fluid justify-content-center align-self-center max-width p-sm-3 py-5 bg-info rounded mx-auto">
+      <div class="pt-3">
+        <h1 class="text-center" href="/">
+          <i class="text-light bg-primary p-2 rounded fa-solid fa-signature"></i>
+          <span class="ms-1"> CodeHub</span>
+        </h1>
+        <p class="text-center">Sign up for free and join other programmers at CodeHub</p>
+      </div>
+      <form id="registerForm" class="p-3 mx-sm-5">
+        <div class="rounded row">
+          <!-- {
+          "name": "VfGd",
+          "email": "user@example.com",
+          "banner": "url",
+          "avatar": "url",
+          "password": "stringst"
+        } -->
+
+          <div class="mb-3 col-sm">
+            <input placeholder="Name" class="form-control" type="text" name="name" required pattern="^[\w]+$" title="The name value must not contain punctuation symbols apart from underscore (_).">
+          </div>
+          <div class="mb-3 col-sm">
+            <input placeholder="Password" class="form-control" type="password" name="password" required minlength="8" title="The password value must be at least 8 characters.">
+          </div>
+          <div class="mb-3">
+            <input class="form-control" placeholder="Email" type="email" name="email" required pattern="^[\w\-.]+@(stud.)?noroff.no$" title="The email value must be a valid stud.noroff.no or noroff.no email address.">
+          </div>
+          
+          <div class="mb-3 col-sm">
+            <label class="form-label" for="avatar">Avatar</label>
+            <input class="form-control" type="url" name="avatar" placeholder="Optional url" title="Must be a valid URL">
+          </div>
+          <div class="mb-3 col-sm">
+            <label class="form-label" for="banner">Banner</label>
+            <input class="form-control" type="url" name="banner" placeholder="Optional url" title="Must be a valid URL">
+          </div>
+        </div>
+        
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-block btn-block btn-lg">Register</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+</body>
+</html>

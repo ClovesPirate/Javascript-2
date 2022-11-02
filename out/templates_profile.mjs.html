@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: templates/profile.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: templates/profile.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { renderUpdatePost } from "./post.mjs";
+import { removePost } from "../api/posts/remove.mjs";
+
+
+/**
+ * Template for rendering profile
+ * @param {{name: string, banner: url, avatar: url; posts: array, _count: array}} postData Takes in values from getProfile() fetch request object;
+ * @returns the profile to HTML
+ */
+export function profileTemplate(postData) {
+  const { name, banner, avatar, posts, _count} = postData;
+
+  const profile = document.createElement('div');
+  const title = document.createElement('h1');
+  const profileBanner = document.createElement('img');
+  const profilePicture = document.createElement('img');
+  const headerContainer = document.createElement('div');
+  const editProfileButton = document.createElement('button');
+  const detailsContainer = document.createElement('div');
+  const titleContainer = document.createElement('div');
+  const ProfileFollowersCount = document.createElement('small');
+  const profileFollowingCount = document.createElement('small');
+  const profilePostsCount = document.createElement('small');
+  const postsContainer = document.createElement('div');
+  const postHeader = document.createElement('p');
+  const imageContainer = document.createElement('div');
+
+  imageContainer.append(profilePicture, editProfileButton);
+  imageContainer.classList.add('d-grid', 'me-3');
+  editProfileButton.innerHTML =  'Edit Profile';
+
+  const bannerContainer = document.querySelector('#bannerContainer');
+  bannerContainer.innerHTML = "";
+
+  if (!banner) {
+    profileBanner.src = "../../../media/images/banner-100.jpg";
+  } else {
+    profileBanner.src = banner;
+  }
+
+  if (!avatar) {
+    profilePicture.src = "../../../media/images/stock-avatar.jpg";
+  } else {
+    profilePicture.src = avatar;
+  }
+
+  headerContainer.classList.add('d-flex');
+  detailsContainer.classList.add('d-flex');
+  profileBanner.classList.add('img-fluid', 'banner', 'd-block', 'mx-auto');
+  profilePicture.classList.add('avatar-sm');
+  editProfileButton.classList.add('btn', 'btn-primary', 'btn-sm');
+  profile.classList.add('profile');
+  title.classList.add('text-secondary', 'fs-2');
+  profileFollowingCount.classList.add('bg-info', 'p-1', 'rounded', 'me-1');
+  ProfileFollowersCount.classList.add('bg-info', 'p-1', 'rounded', 'me-1');
+  profilePostsCount.classList.add('bg-info', 'p-1', 'rounded');
+  postsContainer.classList.add('m-0', 'mt-1', 'row', 'myPosts');
+  postHeader.classList.add('mt-5', 'm-0');
+
+  profileFollowingCount.innerHTML = `Friends: ${_count.following}`;
+  ProfileFollowersCount.innerHTML = `Followers: ${_count.followers}`;
+  profilePostsCount.innerHTML = `Posts: ${_count.posts}`;
+  title.innerHTML = name;
+  editProfileButton.innerHTML = 'Edit';
+  postHeader.innerHTML = 'My Posts';
+
+  editProfileButton.setAttribute('data-bs-toggle', 'modal');
+  editProfileButton.setAttribute('data-bs-target', '#updateMedia');
+  editProfileButton.setAttribute('type', 'button');
+  editProfileButton.addEventListener('click', () => {
+      renderUpdateMedia(postData);
+    });
+
+  posts.forEach(post => {
+    const postContainer = document.createElement('article');
+    const postTitle = document.createElement('p');
+    const postBody = document.createElement('small');
+    const contentContainer = document.createElement('div');
+    const deleteButton = document.createElement('button');
+    const editButton = document.createElement('button');
+    const buttonContainer = document.createElement('div');
+    
+    contentContainer.append(postTitle, postBody);
+
+    deleteButton.addEventListener('click', () => removePost(post.id));
+    editButton.addEventListener('click', () => renderUpdatePost(post));
+
+    postTitle.innerHTML = post.title.slice(0, 18).concat('...');
+    postBody.innerHTML = post.body.slice(0, 30).concat('...');
+
+    buttonContainer.classList.add('me-2')
+    
+    postContainer.classList.add('bg-info', 'p-2', 'my-1', 'col-6-sm', 'd-flex', 'align-items-center', 'inline-block', 'h-25');
+    postBody.classList.add('fs-6', 'text-muted', 'm-0')
+    postTitle.classList.add('m-0');
+
+    deleteButton.classList.add('btn', 'btn-danger');
+    deleteButton.setAttribute('type', 'submit');
+    deleteButton.innerHTML = `&lt;i class="fa-solid fa-trash">&lt;/i>`;
+
+    editButton.classList.add('btn', 'btn-primary');
+    editButton.setAttribute('data-bs-toggle', 'modal');
+    editButton.setAttribute('data-bs-target', '#updatePost');
+    editButton.innerHTML = `&lt;i class="fa fa-pencil" aria-hidden="true">&lt;/i>
+    `;
+    
+    buttonContainer.append(deleteButton, editButton)
+    postContainer.append(buttonContainer, contentContainer);
+    postsContainer.append(postContainer);
+  }) 
+
+  titleContainer.append(title, detailsContainer);
+  detailsContainer.append(profileFollowingCount, ProfileFollowersCount, profilePostsCount);
+  bannerContainer.append(profileBanner);
+  headerContainer.append(imageContainer, titleContainer);
+  profile.append(headerContainer, postHeader, postsContainer);
+
+  return profile;
+}
+
+
+export function renderProfileTemplate(postData, parent) {
+  parent.append(profileTemplate(postData));
+}
+
+/**
+ * Function for rendering banner and avatar values to form
+ * @param {{banner: url, avatar: url}} media 
+ * @returns Takes in the stored values from getProfile() to render the stored values to form inputs
+ */
+export function renderUpdateMedia(media) {
+  const { banner, avatar } = media;
+
+  const form = document.querySelector('#updateMediaForm');
+  form.banner.value = banner;
+  form.avatar.value = avatar;
+
+  return form;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#authFetch">authFetch</a></li><li><a href="global.html#commentOnPost">commentOnPost</a></li><li><a href="global.html#createPost">createPost</a></li><li><a href="global.html#createToast">createToast</a></li><li><a href="global.html#errorMessage">errorMessage</a></li><li><a href="global.html#friendTemplate">friendTemplate</a></li><li><a href="global.html#getFilteredPostsAscending">getFilteredPostsAscending</a></li><li><a href="global.html#getFilteredPostsDescending">getFilteredPostsDescending</a></li><li><a href="global.html#getPost">getPost</a></li><li><a href="global.html#getPosts">getPosts</a></li><li><a href="global.html#getProfile">getProfile</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#handleNameControlInput">handleNameControlInput</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logoutButton">logoutButton</a></li><li><a href="global.html#postTemplate">postTemplate</a></li><li><a href="global.html#profileTemplate">profileTemplate</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removePost">removePost</a></li><li><a href="global.html#renderAuthorToTemplate">renderAuthorToTemplate</a></li><li><a href="global.html#renderBodyToTemplate">renderBodyToTemplate</a></li><li><a href="global.html#renderButtonToTemplate">renderButtonToTemplate</a></li><li><a href="global.html#renderCommentsToPost">renderCommentsToPost</a></li><li><a href="global.html#renderConditionalInteraction">renderConditionalInteraction</a></li><li><a href="global.html#renderFriendTemplates">renderFriendTemplates</a></li><li><a href="global.html#renderPostTemplates">renderPostTemplates</a></li><li><a href="global.html#renderUpdateMedia">renderUpdateMedia</a></li><li><a href="global.html#renderUpdatePost">renderUpdatePost</a></li><li><a href="global.html#renderUserTemplates">renderUserTemplates</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#setCreateCommentListener">setCreateCommentListener</a></li><li><a href="global.html#setCreatePostFormListener">setCreatePostFormListener</a></li><li><a href="global.html#setGetPosts">setGetPosts</a></li><li><a href="global.html#setGetProfile">setGetProfile</a></li><li><a href="global.html#setloginFormListener">setloginFormListener</a></li><li><a href="global.html#setRegisterFormListener">setRegisterFormListener</a></li><li><a href="global.html#setUpdateMediaFormListener">setUpdateMediaFormListener</a></li><li><a href="global.html#setUpdatePostFormListener">setUpdatePostFormListener</a></li><li><a href="global.html#SinglePostTemplate">SinglePostTemplate</a></li><li><a href="global.html#startFollowing">startFollowing</a></li><li><a href="global.html#stopFollowing">stopFollowing</a></li><li><a href="global.html#updateMedia">updateMedia</a></li><li><a href="global.html#updatePost">updatePost</a></li><li><a href="global.html#userTemplate">userTemplate</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sun Oct 16 2022 17:37:32 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
